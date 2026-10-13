@@ -21,9 +21,18 @@ from google_play_scraper import app as gp_app, reviews as gp_reviews, Sort
 
 # ---------------- CONFIG ----------------
 COMPANY_NAME = "Altametrics"
-APP_DISPLAY_NAME = "Altametrics Schedules"
-ANDROID_PKG = "com.altametrics.zipschedulesers"
-IOS_APP_ID = "1207426322"
+APP_DISPLAY_NAME = "Apps"
+
+# ---- APPS LIST: naya app add karna ho to yahan ek block copy karke IDs bhar dein ----
+# android = Play Store link mein "id=" ke baad wala text
+# ios     = App Store link mein "id" ke baad wale numbers
+# Kisi app ka ek store na ho to us field ko "" (khaali) chhod dein.
+APPS = [
+    {"name": "Altametrics Schedules", "android": "com.altametrics.zipschedulesers", "ios": "1207426322"},
+    {"name": "Altametrics Clock", "android": "com.altametrics.zipclockers", "ios": "1327860435"},
+    {"name": "Altametrics DAR", "android": "com.altametrics.ersdashboard", "ios": "1439365607"},
+    {"name": "Altametrics Inventory Pro", "android": "com.altametrics.zipinventory", "ios": "1327917494"},
+]
 STORE_COUNTRY = "us"
 GP_MAX_REVIEWS = 300          # har run mein latest kitne Play reviews laane hain
 IOS_RSS_PAGES = 10            # Apple RSS max 10 pages (~500 reviews)
@@ -47,10 +56,10 @@ def make_id(*parts):
 
 
 # ---------------- FETCHERS ----------------
-def fetch_google_play():
-    info = gp_app(ANDROID_PKG, lang="en", country=STORE_COUNTRY)
+def fetch_google_play(app_name, pkg):
+    info = gp_app(pkg, lang="en", country=STORE_COUNTRY)
     result, _ = gp_reviews(
-        ANDROID_PKG, lang="en", country=STORE_COUNTRY,
+        pkg, lang="en", country=STORE_COUNTRY,
         sort=Sort.NEWEST, count=GP_MAX_REVIEWS,
     )
     reviews = []
@@ -59,6 +68,7 @@ def fetch_google_play():
         reviews.append({
             "id": "gp_" + str(r.get("reviewId")),
             "platform": "Google Play",
+            "app": app_name,
             "author": r.get("userName") or "",
             "title": "",
             "rating": r.get("score"),
@@ -73,11 +83,11 @@ def fetch_google_play():
     return reviews, summary
 
 
-def fetch_app_store():
+def fetch_app_store(app_name, app_id):
     # Rating summary
     lookup = requests.get(
         "https://itunes.apple.com/lookup",
-        params={"id": IOS_APP_ID, "country": STORE_COUNTRY},
+        params={"id": app_id, "country": STORE_COUNTRY},
         headers=HTTP_HEADERS, timeout=30,
     ).json()
     res = (lookup.get("results") or [{}])[0]
@@ -90,7 +100,7 @@ def fetch_app_store():
     reviews = []
     for page in range(1, IOS_RSS_PAGES + 1):
         url = (f"https://itunes.apple.com/{STORE_COUNTRY}/rss/customerreviews/"
-               f"page={page}/id={IOS_APP_ID}/sortby=mostrecent/json")
+               f"page={page}/id={app_id}/sortby=mostrecent/json")
         resp = requests.get(url, headers=HTTP_HEADERS, timeout=30)
         if resp.status_code != 200:
             break
@@ -104,6 +114,7 @@ def fetch_app_store():
             reviews.append({
                 "id": "ios_" + e.get("id", {}).get("label", ""),
                 "platform": "App Store",
+                "app": app_name,
                 "author": e.get("author", {}).get("name", {}).get("label", ""),
                 "title": e.get("title", {}).get("label", ""),
                 "rating": int(e.get("im:rating", {}).get("label", 0) or 0),
@@ -138,6 +149,7 @@ def load_manual_csv():
             by_platform.setdefault(platform, []).append({
                 "id": "m_" + make_id(platform, date, title, text[:80]),
                 "platform": platform,
+                "app": "",
                 "author": (row.get("author") or "").strip(),
                 "title": title,
                 "rating": rating,
@@ -180,11 +192,21 @@ def merge(db, reviews):
     return added
 
 
-def run_source(db, name, func):
+def migrate_old_db(db):
+    """Purane single-app database ko naye multi-app format mein convert karta hai."""
+    first = APPS[0]["name"]
+    for r in db["reviews"].values():
+        if "app" not in r:
+            r["app"] = first if r["id"].startswith(("gp_", "ios_")) else ""
+    for old_key in ("Google Play", "App Store"):
+        db["status"].pop(old_key, None)
+
+
+def run_source(db, name, func, *args):
     status = db["status"].setdefault(name, {})
     status["source"] = "auto"
     try:
-        reviews, summary = func()
+        reviews, summary = func(*args)
         added = merge(db, reviews)
         status.update({"ok": True, "last_success": now_iso(), "error": "",
                        "summary": summary, "fetched": len(reviews)})
@@ -201,7 +223,7 @@ def write_outputs(db):
     reviews = sorted(db["reviews"].values(), key=lambda r: r.get("date", ""), reverse=True)
 
     with open(OUT_CSV, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["platform", "author", "title", "rating", "date", "text"],
+        w = csv.DictWriter(f, fieldnames=["platform", "app", "author", "title", "rating", "date", "text"],
                            extrasaction="ignore")
         w.writeheader()
         w.writerows(reviews)
@@ -223,9 +245,13 @@ def write_outputs(db):
 def main():
     print("=== Review Sync start ===")
     db = load_db()
+    migrate_old_db(db)
 
-    run_source(db, "Google Play", fetch_google_play)
-    run_source(db, "App Store", fetch_app_store)
+    for a in APPS:
+        if a.get("android"):
+            run_source(db, f"Google Play · {a['name']}", fetch_google_play, a["name"], a["android"])
+        if a.get("ios"):
+            run_source(db, f"App Store · {a['name']}", fetch_app_store, a["name"], str(a["ios"]))
 
     manual = load_manual_csv()
     for platform, rows in manual.items():
