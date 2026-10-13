@@ -1,0 +1,39 @@
+{
+ "Glassdoor": {
+  "ok": false,
+  "error": "RuntimeError: Page khula par reviews nahi pehchaane gaye (page title: 'Altametrics Reviews | Glassdoor'). Snapshot: snapshots\\Glassdoor.html",
+  "last_attempt": "2026-10-13T15:26:03Z"
+ },
+ "Indeed": {
+  "ok": true,
+  "error": "",
+  "last_success": "2026-10-13T15:26:03Z",
+  "fetched": 20
+ },
+ "Comparably": {
+  "ok": false,
+  "error": "RuntimeError: Block/captcha page aaya (page title: 'Access to this page has been denied'). Snapshot: snapshots\\Comparably.html",
+  "last_attempt": "2026-10-13T15:26:03Z"
+ },
+ "G2": {
+  "ok": true,
+  "error": "",
+  "last_success": "2026-10-13T15:26:03Z",
+  "fetched": 10
+ },
+ "Capterra": {
+  "ok": false,
+  "error": "RuntimeError: Page khula par reviews nahi pehchaane gaye (page title: 'Altametrics Price, Features, Reviews & Ratings - Capterra India'). Snapshot: snapshots\\Capterra.html",
+  "last_attempt": "2026-10-13T15:26:03Z"
+ },
+ "Software Advice": {
+  "ok": false,
+  "error": "RuntimeError: Page khula par reviews nahi pehchaane gaye (page title: 'Altametrics Reviews, Pros and Cons - 2026 Software Advice'). Snapshot: snapshots\\Software Advice.html",
+  "last_attempt": "2026-10-13T15:26:03Z"
+ },
+ "Yelp": {
+  "ok": false,
+  "error": "RuntimeError: Page khula par reviews nahi pehchaane gaye (page title: 'ALTAMETRICS - Updated October 2026 - 3191 Red Hill Ave, Costa Mesa, California -'). Snapshot: snapshots\\Yelp.html",
+  "last_attempt": "2026-10-13T15:26:03Z"
+ }
+}
