@@ -1,0 +1,6 @@
+# Aapka browser login - KABHI upload na karein
+browser_profile/
+snapshots/
+web_scraper.log
+__pycache__/
+*.tmp
