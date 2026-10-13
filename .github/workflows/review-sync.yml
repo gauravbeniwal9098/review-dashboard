@@ -4,9 +4,18 @@ on:
   schedule:
     - cron: "30 1 * * *"   # roz subah 7:00 AM IST
   workflow_dispatch:        # Actions tab se manually "Run workflow"
+  push:                     # laptop ya manual CSV update hote hi dashboard refresh
+    paths:
+      - "web_reviews.csv"
+      - "web_status.json"
+      - "manual_reviews.csv"
 
 permissions:
   contents: write
+
+concurrency:
+  group: review-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
@@ -31,4 +40,5 @@ jobs:
           git add reviews_database.json index.html all_reviews.csv
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "Daily review sync"
+          git pull --rebase --autostash
           git push
