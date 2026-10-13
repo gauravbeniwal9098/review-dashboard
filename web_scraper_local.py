@@ -274,6 +274,27 @@ def launch(p):
         return p.chromium.launch_persistent_context(**opts)
 
 
+def safe_goto(page, url):
+    """Page kholta hai; agar beech mein koi redirect/navigation takraye to 3 baar retry."""
+    last = None
+    for _ in range(3):
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=90000)
+            return
+        except Exception as e:
+            last = e
+            msg = str(e)
+            if "interrupted by another navigation" in msg or "ERR_ABORTED" in msg:
+                try:
+                    page.wait_for_load_state("domcontentloaded", timeout=30000)
+                except Exception:
+                    pass
+                page.wait_for_timeout(4000)
+                continue
+            raise
+    raise last
+
+
 def human_pause(page):
     page.wait_for_timeout(random.randint(4000, 7000))
     for _ in range(random.randint(3, 6)):
@@ -289,18 +310,23 @@ def scrape_all(sources, setup=False):
     os.makedirs(SNAPSHOT_DIR, exist_ok=True)
     with sync_playwright() as p:
         ctx = launch(p)
-        page = ctx.pages[0] if ctx.pages else ctx.new_page()
 
         if setup:
             for s in sources:
-                page.goto(s["url"], wait_until="domcontentloaded", timeout=90000)
-                input(f"\n>> {s['platform']}: browser mein login / captcha poora karein, "
-                      f"reviews dikhne lagein to yahan Enter dabayein...")
+                tab = ctx.new_page()
+                try:
+                    safe_goto(tab, s["url"])
+                except Exception as e:
+                    print(f"  ! {s['platform']} page nahi khula: {e}")
+                input(f"\n>> {s['platform']}: browser mein login / captcha poora karein. "
+                      f"Jab reviews dikhne lagein aur page load ho chuka ho, tab yahan Enter dabayein...")
+                tab.close()
 
         for s in sources:
             name = s["platform"]
+            page = ctx.new_page()
             try:
-                page.goto(s["url"], wait_until="domcontentloaded", timeout=90000)
+                safe_goto(page, s["url"])
                 human_pause(page)
                 html = page.content()
                 try:
@@ -322,7 +348,12 @@ def scrape_all(sources, setup=False):
                 print(f"  OK   {name}: {len(reviews)} reviews mile")
             except Exception as e:
                 statuses[name] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
-                print(f"  FAIL {name}: {e}")
+                print(f"  FAIL {name}: {str(e).splitlines()[0][:200]}")
+            finally:
+                try:
+                    page.close()
+                except Exception:
+                    pass
             time.sleep(random.uniform(5, 12))
         ctx.close()
     return results, statuses
