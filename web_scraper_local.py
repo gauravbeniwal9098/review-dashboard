@@ -18,18 +18,19 @@ import random
 import re
 import subprocess
 import time
+from html import unescape
 
 # ---------------- CONFIG ----------------
 # Har site par browser mein company ka REVIEWS page kholein, "Most Recent / Newest" sort chunein,
 # phir address bar se poora URL copy karke yahan paste karein. Khaali URL wali site skip hogi.
 WEB_SOURCES = [
     {"platform": "Glassdoor", "url": "https://www.glassdoor.co.in/Reviews/Altametrics-Reviews-E269429.htm?sort.sortType=RD"},
-    {"platform": "Indeed", "url": "https://www.indeed.com/cmp/Altametrics/reviews"},
+    {"platform": "Indeed", "url": "https://www.indeed.com/cmp/Altametrics/reviews?sort=date_desc"},
     {"platform": "Comparably", "url": "https://www.comparably.com/companies/altametrics/reviews"},
-    {"platform": "G2", "url": "https://www.g2.com/products/altametrics/reviews?filters%5Bcomment_answer_values%5D=&order=most_recent&utf8=%E2%9C%93#reviews"},
-    {"platform": "Capterra", "url": "https://www.capterra.in/software/16156/erestaurant?sort=most_recent#reviews"},
+    {"platform": "G2", "url": "https://www.g2.com/products/altametrics/reviews?order=most_recent"},
+    {"platform": "Capterra", "url": "https://www.capterra.in/software/16156/erestaurant?sort=most_recent"},
     {"platform": "Software Advice", "url": "https://www.softwareadvice.com/inventory-management/altametrics-profile/reviews/"},
-    {"platform": "Yelp", "url": "https://www.yelp.com/biz/altametrics-costa-mesa?dd_referrer=https%3A%2F%2Fwww.google.com%2F"},
+    {"platform": "Yelp", "url": "https://www.yelp.com/biz/altametrics-costa-mesa?sort_by=date_desc"},
 ]
 
 OUT_CSV = "web_reviews.csv"
@@ -46,11 +47,12 @@ FIELDS = ["platform", "author", "title", "rating", "date", "text"]
 # par bhi zyaadatar kaam chalta rehta hai.
 RATING_KEYS = ("ratingOverall", "overallRating", "reviewRating", "rating", "ratingValue",
                "starRating", "stars", "score", "overall")
-DATE_KEYS = ("reviewDateTime", "datePublished", "submissionDate", "reviewDate", "dateCreated",
+DATE_KEYS = ("reviewDateTime", "writtenOn", "datePublished", "submissionDate", "reviewDate", "dateCreated",
              "createdAt", "publishedAt", "publishDate", "submittedAt", "created", "date")
 TITLE_KEYS = ("summary", "headline", "title", "reviewTitle", "name")
 BODY_KEYS = ("reviewBody", "reviewText", "text", "body", "content", "comment", "description")
-PROS_CONS = (("pros", "Pros"), ("cons", "Cons"), ("advice", "Advice"),
+PROS_CONS = (("generalComments", "Comments"), ("pros", "Pros"), ("prosText", "Pros"),
+             ("cons", "Cons"), ("consText", "Cons"), ("advice", "Advice"),
              ("adviceToManagement", "Advice"))
 AUTHOR_KEYS = ("jobTitle", "authorName", "author", "reviewer", "position", "role")
 LOCATION_KEYS = ("location", "reviewerLocation", "city")
@@ -92,6 +94,9 @@ class Extractor:
         if isinstance(v, (int, float)) and not isinstance(v, bool):
             return str(v)
         if isinstance(v, dict):
+            if v.get("firstName"):
+                last = (v.get("lastName") or "").strip()
+                return f"{v['firstName'].strip()} {last[:1] + '.' if last else ''}".strip()
             for k in ("text", "name", "value", "jobTitle", "body", "label", "displayName"):
                 if k in v:
                     t = self.text(v[k], depth + 1)
@@ -126,7 +131,7 @@ class Extractor:
         if isinstance(v, (int, float)):
             ts = v / 1000 if v > 1e11 else v
             if 1e9 < ts < 4e9:
-                return dt.datetime.utcfromtimestamp(ts).date().isoformat()
+                return dt.datetime.fromtimestamp(ts, dt.timezone.utc).date().isoformat()
             return ""
         s = str(v).strip()
         if s.isdigit():
@@ -192,8 +197,61 @@ class Extractor:
         return found
 
 
-def json_blobs_from_html(html):
+def next_flight_blobs(html):
+    """Next.js (App Router) pages data ko self.__next_f.push([1,"..."]) mein bhejte hain."""
+    chunks = []
+    for m in re.finditer(r'self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)', html):
+        try:
+            chunks.append(json.loads(m.group(1)))
+        except ValueError:
+            pass
     blobs = []
+    for line in "".join(chunks).split("\n"):
+        m = re.match(r"^[0-9a-zA-Z]+:([A-Z]{0,2})([\[{].*)$", line)
+        if not m:
+            continue
+        try:
+            blobs.append(json.loads(m.group(2)))
+        except ValueError:
+            pass
+    return blobs
+
+
+def html_card_reviews(html, platform):
+    """Capterra jaisi sites jo reviews seedha HTML cards mein dikhati hain."""
+    def clean(x):
+        x = re.sub(r"<[^>]+>", " ", x or "")
+        return re.sub(r"\s+", " ", unescape(x)).strip()
+
+    out = []
+    starts = [m.start() for m in re.finditer(r'<div class="[^"]*review-card[^"]*"[^>]*data-entity="review"', html)]
+    for i, st in enumerate(starts):
+        card = html[st: starts[i + 1] if i + 1 < len(starts) else st + 60000]
+        card = re.sub(r'data-bs-title="[^"]*"', "", card)
+        g = lambda pat: (re.search(pat, card, re.S) or [None, ""])[1]
+        name = clean(g(r'<div class="fw-600 mb-1">(.*?)</div>'))
+        role = clean(g(r'<div class="fs-4 text-neutral-90 mb-1">(.*?)</div>'))
+        title = clean(g(r"<h3[^>]*>(.*?)</h3>")).strip('"\u201c\u201d ')
+        date = Extractor.date(clean(g(r'<div class="fs-5 text-neutral-90[^"]*">(.*?)</div>')))
+        try:
+            rating = float(clean(g(r'<span class="ms-1">(.*?)</span>')))
+        except ValueError:
+            rating = None
+        comments = clean(g(r'<div class="fs-4 lh-2 text-neutral-99">\s*<span>(.*?)</span>'))
+        pros = clean(g(r'Pros:\s*</div>\s*<div class="fs-4 lh-2 text-neutral-99">(.*?)</div>'))
+        cons = clean(g(r'Cons:\s*</div>\s*<div class="fs-4 lh-2 text-neutral-99">(.*?)</div>'))
+        parts = [f"Comments: {comments}" if comments else "", f"Pros: {pros}" if pros else "",
+                 f"Cons: {cons}" if cons else ""]
+        body = " | ".join(p for p in parts if p)
+        if date and rating and 0 < rating <= 5 and (title or body):
+            author = ", ".join(x for x in (name, role) if x)
+            out.append({"platform": platform, "author": author[:150], "title": title[:300],
+                        "rating": round(rating, 1), "date": date, "text": body[:5000]})
+    return out
+
+
+def json_blobs_from_html(html):
+    blobs = next_flight_blobs(html)
     for body in re.findall(r"<script\b[^>]*>(.*?)</script>", html, re.S | re.I):
         body = body.strip()
         if not body or len(body) > 30_000_000:
@@ -230,12 +288,12 @@ def extract_reviews(html, extra_json_strings, platform):
     for b in blobs:
         ex.collect_refs(b)
     out, seen = [], set()
-    for b in blobs:
-        for r in ex.walk(b, platform):
-            k = review_key(r)
-            if k not in seen:
-                seen.add(k)
-                out.append(r)
+    found = [r for b in blobs for r in ex.walk(b, platform)] + html_card_reviews(html, platform)
+    for r in found:
+        k = review_key(r)
+        if k not in seen:
+            seen.add(k)
+            out.append(r)
     return out
 
 
@@ -259,6 +317,9 @@ GLOBALS_JS = """() => {
   }
   return out;
 }"""
+
+ZERO_HINTS = ("could be the first review", "be the first to review", "no reviews yet",
+              "be the first to write a review")
 
 BLOCK_HINTS = ("just a moment", "verify you are human", "access denied", "captcha",
                "are you a robot", "security check", "attention required")
@@ -329,6 +390,12 @@ def scrape_all(sources, setup=False):
                 safe_goto(page, s["url"])
                 human_pause(page)
                 html = page.content()
+                if any(h in ((page.title() or "") + html[:5000]).lower() for h in BLOCK_HINTS):
+                    print(f"  ..   {name}: bot-check aaya, 20 sec ruk kar dobara try")
+                    page.wait_for_timeout(20000)
+                    safe_goto(page, s["url"])
+                    human_pause(page)
+                    html = page.content()
                 try:
                     extra = page.evaluate(GLOBALS_JS)
                 except Exception:
@@ -338,6 +405,11 @@ def scrape_all(sources, setup=False):
                     f.write(html)
 
                 reviews = extract_reviews(html, extra, name)
+                page_text = re.sub(r"<[^>]+>", " ", html).lower()
+                if not reviews and any(h in page_text for h in ZERO_HINTS):
+                    statuses[name] = {"ok": True, "fetched": 0}
+                    print(f"  OK   {name}: is page par abhi koi public review nahi hai")
+                    continue
                 if not reviews:
                     title = (page.title() or "").strip()
                     blocked = any(h in (title + html[:5000]).lower() for h in BLOCK_HINTS)
@@ -388,7 +460,7 @@ def save_status(statuses):
                 old = json.load(f)
         except ValueError:
             old = {}
-    now = dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0, tzinfo=None).isoformat() + "Z"
     for name, st in statuses.items():
         prev = old.get(name, {})
         if st["ok"]:

@@ -49,7 +49,7 @@ HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; ReviewSync/1.0)"}
 
 
 def now_iso():
-    return dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    return dt.datetime.now(dt.timezone.utc).replace(microsecond=0, tzinfo=None).isoformat() + "Z"
 
 
 def make_id(*parts):
