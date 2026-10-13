@@ -1,0 +1,416 @@
+# -*- coding: utf-8 -*-
+"""
+Web platforms (Glassdoor, Indeed, Comparably ...) ke reviews LAPTOP se automatic laata hai.
+
+Kyun laptop? Ye sites cloud servers (GitHub Actions) ko block karti hain, lekin aapke
+normal internet + asli Chrome browser ko aam user ki tarah dekhti hain.
+
+Pehli baar:  python web_scraper_local.py --setup   (browser khulega, login/captcha kar lein)
+Roz:         python web_scraper_local.py           (Task Scheduler se automatic)
+"""
+import argparse
+import csv
+import datetime as dt
+import hashlib
+import json
+import os
+import random
+import re
+import subprocess
+import time
+
+# ---------------- CONFIG ----------------
+# Har site par browser mein company ka REVIEWS page kholein, "Most Recent / Newest" sort chunein,
+# phir address bar se poora URL copy karke yahan paste karein. Khaali URL wali site skip hogi.
+WEB_SOURCES = [
+    {"platform": "Glassdoor", "url": ""},
+    {"platform": "Indeed", "url": ""},
+    {"platform": "Comparably", "url": ""},
+    {"platform": "G2", "url": ""},
+    {"platform": "Capterra", "url": ""},
+    {"platform": "Software Advice", "url": ""},
+    {"platform": "Yelp", "url": ""},
+]
+
+OUT_CSV = "web_reviews.csv"
+STATUS_FILE = "web_status.json"
+SNAPSHOT_DIR = "snapshots"        # har site ka page yahan save hota hai (debug ke liye)
+PROFILE_DIR = "browser_profile"   # aapka login yahan save rehta hai. KABHI GitHub par upload na karein.
+AUTO_GIT_PUSH = True
+
+FIELDS = ["platform", "author", "title", "rating", "date", "text"]
+
+# ---------------- REVIEW EXTRACTOR ----------------
+# Sites apne page ke andar reviews ka data JSON mein rakhti hain. Yeh code us JSON mein
+# woh objects dhoondhta hai jinme rating + date + text teeno hon. Isse site ka design badalne
+# par bhi zyaadatar kaam chalta rehta hai.
+RATING_KEYS = ("ratingOverall", "overallRating", "reviewRating", "rating", "ratingValue",
+               "starRating", "stars", "score", "overall")
+DATE_KEYS = ("reviewDateTime", "datePublished", "submissionDate", "reviewDate", "dateCreated",
+             "createdAt", "publishedAt", "publishDate", "submittedAt", "created", "date")
+TITLE_KEYS = ("summary", "headline", "title", "reviewTitle", "name")
+BODY_KEYS = ("reviewBody", "reviewText", "text", "body", "content", "comment", "description")
+PROS_CONS = (("pros", "Pros"), ("cons", "Cons"), ("advice", "Advice"),
+             ("adviceToManagement", "Advice"))
+AUTHOR_KEYS = ("jobTitle", "authorName", "author", "reviewer", "position", "role")
+LOCATION_KEYS = ("location", "reviewerLocation", "city")
+
+
+class Extractor:
+    def __init__(self):
+        self.refs = {}
+
+    def collect_refs(self, blob):
+        # Apollo/GraphQL cache: {"JobTitle:123": {...}} jaise references (kisi bhi depth par)
+        stack, seen = [blob], 0
+        while stack and seen < 500_000:
+            node = stack.pop()
+            seen += 1
+            if isinstance(node, dict):
+                for k, v in node.items():
+                    if isinstance(v, dict) and re.match(r"^[A-Za-z_]+:\S+$", str(k)):
+                        self.refs[k] = v
+                    if isinstance(v, (dict, list)):
+                        stack.append(v)
+            elif isinstance(node, list):
+                stack.extend(node)
+
+    def resolve(self, v):
+        for _ in range(3):
+            if isinstance(v, dict) and "__ref" in v and v["__ref"] in self.refs:
+                v = self.refs[v["__ref"]]
+            else:
+                break
+        return v
+
+    def text(self, v, depth=0):
+        v = self.resolve(v)
+        if v is None or depth > 3:
+            return ""
+        if isinstance(v, str):
+            return re.sub(r"\s+", " ", v).strip()
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            return str(v)
+        if isinstance(v, dict):
+            for k in ("text", "name", "value", "jobTitle", "body", "label", "displayName"):
+                if k in v:
+                    t = self.text(v[k], depth + 1)
+                    if t:
+                        return t
+        if isinstance(v, list):
+            return " ".join(filter(None, (self.text(x, depth + 1) for x in v[:10])))
+        return ""
+
+    def rating(self, v):
+        v = self.resolve(v)
+        if isinstance(v, dict):
+            for k in ("ratingValue", "value", "rating", "overall"):
+                if k in v:
+                    return self.rating(v[k])
+            return None
+        try:
+            r = float(v)
+        except (TypeError, ValueError):
+            return None
+        return r if 0 < r <= 5 else None
+
+    @staticmethod
+    def date(v):
+        if v is None or isinstance(v, bool):
+            return ""
+        if isinstance(v, dict):
+            for k in ("date", "value", "text"):
+                if k in v:
+                    return Extractor.date(v[k])
+            return ""
+        if isinstance(v, (int, float)):
+            ts = v / 1000 if v > 1e11 else v
+            if 1e9 < ts < 4e9:
+                return dt.datetime.utcfromtimestamp(ts).date().isoformat()
+            return ""
+        s = str(v).strip()
+        if s.isdigit():
+            return Extractor.date(int(s))
+        m = re.match(r"(\d{4}-\d{2}-\d{2})", s)
+        if m:
+            return m.group(1)
+        for fmt in ("%b %d, %Y", "%B %d, %Y", "%d %b %Y", "%d %B %Y", "%m/%d/%Y", "%b %d %Y"):
+            try:
+                return dt.datetime.strptime(s, fmt).date().isoformat()
+            except ValueError:
+                pass
+        return ""
+
+    def first(self, d, keys, fn):
+        for k in keys:
+            if k in d:
+                val = fn(d[k])
+                if val:
+                    return val
+        return None
+
+    def as_review(self, d, platform):
+        rating = self.first(d, RATING_KEYS, self.rating)
+        date = self.first(d, DATE_KEYS, self.date)
+        if not rating or not date:
+            return None
+        if not ("2005-01-01" <= date <= (dt.date.today() + dt.timedelta(days=1)).isoformat()):
+            return None
+
+        parts = []
+        for key, label in PROS_CONS:
+            t = self.text(d.get(key))
+            if t:
+                parts.append(f"{label}: {t}")
+        body = " | ".join(parts) if parts else (self.first(d, BODY_KEYS, self.text) or "")
+        title = self.first(d, TITLE_KEYS, self.text) or ""
+        if title == body:
+            title = ""
+        if len(title + body) < 15:
+            return None
+
+        author = self.first(d, AUTHOR_KEYS, self.text) or ""
+        loc = self.first(d, LOCATION_KEYS, self.text) or ""
+        if loc and loc not in author:
+            author = f"{author}, {loc}" if author else loc
+        return {"platform": platform, "author": author[:150], "title": title[:300],
+                "rating": round(rating, 1), "date": date, "text": body[:5000]}
+
+    def walk(self, blob, platform):
+        found, stack, seen = [], [blob], 0
+        while stack and seen < 2_000_000:
+            node = stack.pop()
+            seen += 1
+            if isinstance(node, dict):
+                r = self.as_review(node, platform)
+                if r:
+                    found.append(r)
+                    continue
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+        return found
+
+
+def json_blobs_from_html(html):
+    blobs = []
+    for body in re.findall(r"<script\b[^>]*>(.*?)</script>", html, re.S | re.I):
+        body = body.strip()
+        if not body or len(body) > 30_000_000:
+            continue
+        try:
+            blobs.append(json.loads(body))
+            continue
+        except ValueError:
+            pass
+        dec = json.JSONDecoder()
+        for m in re.finditer(r'JSON\.parse\(("(?:[^"\\]|\\.)*")\)', body):
+            try:
+                blobs.append(json.loads(json.loads(m.group(1))))
+            except ValueError:
+                pass
+        for m in re.finditer(r"=\s*(?=[\{\[])", body):
+            try:
+                obj, _ = dec.raw_decode(body, m.end())
+                if isinstance(obj, (dict, list)) and len(json.dumps(obj)) > 200:
+                    blobs.append(obj)
+            except ValueError:
+                pass
+    return blobs
+
+
+def extract_reviews(html, extra_json_strings, platform):
+    blobs = json_blobs_from_html(html)
+    for s in extra_json_strings or []:
+        try:
+            blobs.append(json.loads(s))
+        except ValueError:
+            pass
+    ex = Extractor()
+    for b in blobs:
+        ex.collect_refs(b)
+    out, seen = [], set()
+    for b in blobs:
+        for r in ex.walk(b, platform):
+            k = review_key(r)
+            if k not in seen:
+                seen.add(k)
+                out.append(r)
+    return out
+
+
+def review_key(r):
+    raw = "|".join(str(r.get(f, "")).strip().lower()[:80] for f in ("platform", "date", "title", "text"))
+    return hashlib.sha1(raw.encode("utf-8")).hexdigest()
+
+
+# ---------------- BROWSER ----------------
+GLOBALS_JS = """() => {
+  const out = [];
+  for (const k of Object.keys(window)) {
+    if (!/^(__|_initial|initial|apollo|APOLLO|INITIAL)/i.test(k)) continue;
+    try {
+      const v = window[k];
+      if (v && typeof v === "object") {
+        const s = JSON.stringify(v);
+        if (s && s.length > 200 && s.length < 30000000) out.push(s);
+      }
+    } catch (e) {}
+  }
+  return out;
+}"""
+
+BLOCK_HINTS = ("just a moment", "verify you are human", "access denied", "captcha",
+               "are you a robot", "security check", "attention required")
+
+
+def launch(p):
+    opts = dict(user_data_dir=PROFILE_DIR, headless=False, viewport=None,
+                args=["--disable-blink-features=AutomationControlled"])
+    try:
+        return p.chromium.launch_persistent_context(channel="chrome", **opts)
+    except Exception:
+        print("  (Chrome nahi mila, Playwright ka Chromium use kar raha hoon)")
+        return p.chromium.launch_persistent_context(**opts)
+
+
+def human_pause(page):
+    page.wait_for_timeout(random.randint(4000, 7000))
+    for _ in range(random.randint(3, 6)):
+        page.mouse.wheel(0, random.randint(400, 900))
+        page.wait_for_timeout(random.randint(600, 1400))
+    page.wait_for_timeout(random.randint(1500, 3000))
+
+
+def scrape_all(sources, setup=False):
+    from playwright.sync_api import sync_playwright
+
+    results, statuses = [], {}
+    os.makedirs(SNAPSHOT_DIR, exist_ok=True)
+    with sync_playwright() as p:
+        ctx = launch(p)
+        page = ctx.pages[0] if ctx.pages else ctx.new_page()
+
+        if setup:
+            for s in sources:
+                page.goto(s["url"], wait_until="domcontentloaded", timeout=90000)
+                input(f"\n>> {s['platform']}: browser mein login / captcha poora karein, "
+                      f"reviews dikhne lagein to yahan Enter dabayein...")
+
+        for s in sources:
+            name = s["platform"]
+            try:
+                page.goto(s["url"], wait_until="domcontentloaded", timeout=90000)
+                human_pause(page)
+                html = page.content()
+                try:
+                    extra = page.evaluate(GLOBALS_JS)
+                except Exception:
+                    extra = []
+                snap = os.path.join(SNAPSHOT_DIR, f"{name}.html")
+                with open(snap, "w", encoding="utf-8") as f:
+                    f.write(html)
+
+                reviews = extract_reviews(html, extra, name)
+                if not reviews:
+                    title = (page.title() or "").strip()
+                    blocked = any(h in (title + html[:5000]).lower() for h in BLOCK_HINTS)
+                    why = "Block/captcha page aaya" if blocked else "Page khula par reviews nahi pehchaane gaye"
+                    raise RuntimeError(f"{why} (page title: '{title[:80]}'). Snapshot: {snap}")
+                results.extend(reviews)
+                statuses[name] = {"ok": True, "fetched": len(reviews)}
+                print(f"  OK   {name}: {len(reviews)} reviews mile")
+            except Exception as e:
+                statuses[name] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
+                print(f"  FAIL {name}: {e}")
+            time.sleep(random.uniform(5, 12))
+        ctx.close()
+    return results, statuses
+
+
+# ---------------- SAVE + PUSH ----------------
+def merge_csv(new_reviews):
+    rows = {}
+    if os.path.exists(OUT_CSV):
+        with open(OUT_CSV, newline="", encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                rows[review_key(r)] = r
+    added = 0
+    for r in new_reviews:
+        k = review_key(r)
+        if k not in rows:
+            added += 1
+        rows[k] = r
+    ordered = sorted(rows.values(), key=lambda r: r.get("date", ""), reverse=True)
+    with open(OUT_CSV, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(ordered)
+    return added
+
+
+def save_status(statuses):
+    old = {}
+    if os.path.exists(STATUS_FILE):
+        try:
+            with open(STATUS_FILE, encoding="utf-8") as f:
+                old = json.load(f)
+        except ValueError:
+            old = {}
+    now = dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    for name, st in statuses.items():
+        prev = old.get(name, {})
+        if st["ok"]:
+            prev.update({"ok": True, "error": "", "last_success": now, "fetched": st["fetched"]})
+        else:
+            prev.update({"ok": False, "error": st["error"], "last_attempt": now})
+        old[name] = prev
+    with open(STATUS_FILE, "w", encoding="utf-8") as f:
+        json.dump(old, f, indent=1, ensure_ascii=False)
+
+
+def git_push():
+    if not os.path.isdir(".git"):
+        print("  (Yeh folder git repo nahi hai, push skip)")
+        return
+
+    def git(*a):
+        r = subprocess.run(["git", *a], capture_output=True, text=True)
+        if r.returncode != 0 and a[0] not in ("diff",):
+            print(f"  git {a[0]}: {(r.stderr or r.stdout).strip()[:300]}")
+        return r
+
+    git("add", OUT_CSV, STATUS_FILE)
+    if git("diff", "--cached", "--quiet").returncode == 0:
+        print("  Koi naya change nahi")
+        return
+    git("commit", "-m", "Web reviews sync (laptop)")
+    git("pull", "--rebase", "--autostash")
+    if git("push").returncode == 0:
+        print("  GitHub par push ho gaya, dashboard 1-2 minute mein update hoga")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--setup", action="store_true", help="pehli baar login/captcha ke liye")
+    ap.add_argument("--no-push", action="store_true")
+    args = ap.parse_args()
+
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    sources = [s for s in WEB_SOURCES if s.get("url", "").strip()]
+    if not sources:
+        print("WEB_SOURCES mein koi URL nahi hai. web_scraper_local.py kholkar URLs bharein.")
+        return
+
+    print(f"=== Web review sync: {dt.datetime.now():%Y-%m-%d %H:%M} ===")
+    reviews, statuses = scrape_all(sources, setup=args.setup)
+    added = merge_csv(reviews)
+    save_status(statuses)
+    print(f"  {added} naye reviews {OUT_CSV} mein jude")
+    if AUTO_GIT_PUSH and not args.no_push:
+        git_push()
+    print("=== Done ===")
+
+
+if __name__ == "__main__":
+    main()
