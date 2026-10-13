@@ -23,13 +23,13 @@ import time
 # Har site par browser mein company ka REVIEWS page kholein, "Most Recent / Newest" sort chunein,
 # phir address bar se poora URL copy karke yahan paste karein. Khaali URL wali site skip hogi.
 WEB_SOURCES = [
-    {"platform": "Glassdoor", "url": ""},
-    {"platform": "Indeed", "url": ""},
-    {"platform": "Comparably", "url": ""},
-    {"platform": "G2", "url": ""},
-    {"platform": "Capterra", "url": ""},
-    {"platform": "Software Advice", "url": ""},
-    {"platform": "Yelp", "url": ""},
+    {"platform": "Glassdoor", "url": "https://www.glassdoor.co.in/Reviews/Altametrics-Reviews-E269429.htm?sort.sortType=RD"},
+    {"platform": "Indeed", "url": "https://www.indeed.com/cmp/Altametrics/reviews"},
+    {"platform": "Comparably", "url": "https://www.comparably.com/companies/altametrics/reviews"},
+    {"platform": "G2", "url": "https://www.g2.com/products/altametrics/reviews?filters%5Bcomment_answer_values%5D=&order=most_recent&utf8=%E2%9C%93#reviews"},
+    {"platform": "Capterra", "url": "https://www.capterra.in/software/16156/erestaurant?sort=most_recent#reviews"},
+    {"platform": "Software Advice", "url": "https://www.softwareadvice.com/inventory-management/altametrics-profile/reviews/"},
+    {"platform": "Yelp", "url": "https://www.yelp.com/biz/altametrics-costa-mesa?dd_referrer=https%3A%2F%2Fwww.google.com%2F"},
 ]
 
 OUT_CSV = "web_reviews.csv"
