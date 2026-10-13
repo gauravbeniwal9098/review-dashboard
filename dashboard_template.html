@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reviews Dashboard</title>
+<style>
+  body{margin:0;background:#f4f5f7;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1f2430}
+  .wrap{max-width:1160px;margin:0 auto;padding:24px 16px}
+  .card{background:#fff;border:1px solid #e3e6eb;border-radius:10px;padding:18px 20px;margin-bottom:16px}
+  h1{font-size:22px;margin:0 0 4px} .muted{color:#6b7385;font-size:13px}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .btn{background:#f4f5f7;border:1px solid #c9ced6;padding:6px 12px;border-radius:6px;font-size:13px;cursor:pointer}
+  .btn.active{background:#2d56b3;color:#fff;border-color:#2d56b3}
+  select,input{padding:6px 8px;border:1px solid #c9ced6;border-radius:6px;font-size:13px}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+  .tile{background:#f7f8fa;border:1px solid #edf0f5;border-radius:8px;padding:12px 14px}
+  .tile .name{font-weight:700;font-size:14px} .tile .v{font-size:24px;font-weight:700;margin:4px 0}
+  .ok{color:#137a3a} .bad{color:#c0392b} .small{font-size:12px}
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%} th,td{padding:8px 10px;border-bottom:1px solid #eef0f3;text-align:left;vertical-align:top;font-size:13px}
+  th{font-size:11px;text-transform:uppercase;color:#6b7385;background:#fafbfc}
+  .stars{color:#e0a100;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1 id="title">Reviews Dashboard</h1>
+    <div class="muted" id="generated"></div>
+  </div>
+
+  <div class="card bar">
+    <button class="btn" data-days="7">Last 7 Days</button>
+    <button class="btn active" data-days="30">Last 30 Days</button>
+    <button class="btn" data-days="90">Last 90 Days</button>
+    <button class="btn" data-days="0">All Time</button>
+    <span class="muted">Custom:</span>
+    <input type="date" id="from"> <span class="muted">to</span> <input type="date" id="to">
+    <select id="platform"><option value="">All platforms</option></select>
+    <select id="app"><option value="">All apps</option></select>
+  </div>
+
+  <div class="card"><div class="tiles" id="tiles"></div></div>
+
+  <div class="card">
+    <div class="muted" id="count" style="margin-bottom:8px"></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Date</th><th>Platform</th><th>App</th><th>Rating</th><th>Author</th><th>Review</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = __REVIEW_DATA__;
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const iso = d => d.toISOString().slice(0,10);
+const fromEl = document.getElementById("from"), toEl = document.getElementById("to"), platEl = document.getElementById("platform");
+
+document.getElementById("title").textContent = `Reviews Dashboard: ${DATA.company} (${DATA.app})`;
+document.getElementById("generated").textContent = "Last sync: " + new Date(DATA.generated).toLocaleString();
+
+const appEl = document.getElementById("app");
+const keyOf = r => r.app ? `${r.platform} · ${r.app}` : r.platform;
+const tileKeys = [...new Set([...Object.keys(DATA.status), ...DATA.reviews.map(keyOf)])].sort();
+const fill = (el, vals) => vals.forEach(v => el.insertAdjacentHTML("beforeend", `<option>${esc(v)}</option>`));
+fill(platEl, [...new Set(DATA.reviews.map(r => r.platform).concat(tileKeys.map(k => k.split(" · ")[0])))].sort());
+fill(appEl, [...new Set(DATA.reviews.map(r => r.app).concat(tileKeys.filter(k => k.includes(" · ")).map(k => k.split(" · ")[1])))].filter(Boolean).sort());
+
+function setPreset(days){
+  const today = new Date();
+  toEl.value = iso(today);
+  fromEl.value = days ? iso(new Date(today - days*864e5)) : "";
+}
+
+function render(){
+  const from = fromEl.value || "0000", to = toEl.value || "9999", plat = platEl.value, app = appEl.value;
+  const list = DATA.reviews.filter(r => r.date >= from && r.date <= to && (!plat || r.platform === plat) && (!app || r.app === app));
+
+  document.getElementById("tiles").innerHTML = tileKeys.filter(k => {
+    const [kp, ka] = k.split(" · ");
+    return (!plat || kp === plat) && (!app || ka === app);
+  }).map(p => {
+    const st = DATA.status[p] || {}, rs = list.filter(r => keyOf(r) === p);
+    const avg = rs.length ? (rs.reduce((a,r) => a + Number(r.rating||0), 0) / rs.length).toFixed(2) : "–";
+    const sum = st.summary || {};
+    const overall = sum.rating ? `Store rating ${sum.rating}${sum.total_ratings ? " · " + Number(sum.total_ratings).toLocaleString() + " ratings" : ""}` : "";
+    const health = st.ok === false
+      ? `<div class="small bad">FAILED: ${esc(st.error)}</div>`
+      : `<div class="small ok">${st.source === "manual" ? "Manual CSV" : "Auto"} · ${st.last_success ? new Date(st.last_success).toLocaleDateString() : ""}</div>`;
+    return `<div class="tile"><div class="name">${esc(p)}</div><div class="v">${rs.length}</div>
+      <div class="small muted">reviews in range · avg ${avg}</div><div class="small muted">${esc(overall)}</div>${health}</div>`;
+  }).join("");
+
+  document.getElementById("count").textContent = `${list.length} reviews`;
+  document.getElementById("rows").innerHTML = list.slice(0, 1000).map(r => `<tr>
+    <td>${esc(r.date)}</td><td>${esc(r.platform)}</td><td>${esc(r.app)}</td>
+    <td class="stars">${"★".repeat(Math.round(r.rating||0))}${"☆".repeat(5-Math.round(r.rating||0))}</td>
+    <td>${esc(r.author)}</td><td>${r.title ? "<b>"+esc(r.title)+"</b><br>" : ""}${esc(r.text)}</td></tr>`).join("");
+}
+
+document.querySelectorAll(".btn").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".btn").forEach(x => x.classList.remove("active"));
+  b.classList.add("active"); setPreset(Number(b.dataset.days)); render();
+});
+[fromEl, toEl].forEach(el => el.onchange = () => { document.querySelectorAll(".btn").forEach(x => x.classList.remove("active")); render(); });
+platEl.onchange = render; appEl.onchange = render;
+setPreset(30); render();
+</script>
+</body>
+</html>
