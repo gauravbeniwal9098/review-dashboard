@@ -87,7 +87,11 @@ function render(){
     const st = DATA.status[p] || {}, rs = list.filter(r => keyOf(r) === p);
     const avg = rs.length ? (rs.reduce((a,r) => a + Number(r.rating||0), 0) / rs.length).toFixed(2) : "–";
     const sum = st.summary || {};
-    const overall = sum.rating ? `Store rating ${sum.rating}${sum.total_ratings ? " · " + Number(sum.total_ratings).toLocaleString() + " ratings" : ""}` : "";
+    const saved = DATA.reviews.filter(r => keyOf(r) === p).length;
+    let overall = "";
+    if (sum.total_ratings) overall = `Store rating ${sum.rating} · ${Number(sum.total_ratings).toLocaleString()} ratings`;
+    else if (sum.total_reviews != null) overall = `Overall ${sum.rating ?? "–"} · ${Number(sum.total_reviews).toLocaleString()} total reviews on site`;
+    overall += `${overall ? " · " : ""}${saved} saved here`;
     const label = {manual: "Manual CSV", laptop: "Laptop auto"}[st.source] || "Auto";
     const ageH = st.last_success ? (Date.now() - new Date(st.last_success)) / 36e5 : 1e9;
     const last = st.last_success ? new Date(st.last_success).toLocaleDateString() : "kabhi nahi";

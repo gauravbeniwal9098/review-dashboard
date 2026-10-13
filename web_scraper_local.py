@@ -18,6 +18,7 @@ import random
 import re
 import subprocess
 import time
+from collections import Counter
 from html import unescape
 
 # ---------------- CONFIG ----------------
@@ -297,6 +298,44 @@ def extract_reviews(html, extra_json_strings, platform):
     return out
 
 
+SUM_RATING_KEYS = ("overallRating", "ratingValue", "averageRating", "rating", "avgRating")
+SUM_COUNT_KEYS = ("reviewCount", "totalReviewCount", "numberOfReviews", "totalReviews",
+                  "ratingCount", "reviewsCount")
+
+
+def extract_summary(html, extra_json_strings):
+    """Site ki overall rating aur TOTAL reviews ki ginti (jaise Glassdoor 4.7 · 312)."""
+    blobs = json_blobs_from_html(html)
+    for s in extra_json_strings or []:
+        try:
+            blobs.append(json.loads(s))
+        except ValueError:
+            pass
+    pairs, stack, seen = [], list(blobs), 0
+    while stack and seen < 2_000_000:
+        x = stack.pop()
+        seen += 1
+        if isinstance(x, dict):
+            r = next((x[k] for k in SUM_RATING_KEYS if k in x and isinstance(x[k], (int, float, str))
+                      and not isinstance(x[k], bool)), None)
+            c = next((x[k] for k in SUM_COUNT_KEYS if k in x and isinstance(x[k], (int, float, str))
+                      and not isinstance(x[k], bool)), None)
+            try:
+                r, c = round(float(r), 2), int(str(c).replace(",", ""))
+                if 0 < r <= 5 and c > 0:
+                    pairs.append((r, c))
+            except (TypeError, ValueError):
+                pass
+            stack.extend(x.values())
+        elif isinstance(x, list):
+            stack.extend(x)
+    if not pairs:
+        return None
+    # Page par doosri companies ke ratings bhi ho sakte hain; sabse zyaada baar aane wala pair hi apna hai
+    (r, c), _ = Counter(pairs).most_common(1)[0]
+    return {"rating": r, "total_ratings": None, "total_reviews": c}
+
+
 def review_key(r):
     raw = "|".join(str(r.get(f, "")).strip().lower()[:80] for f in ("platform", "date", "title", "text"))
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()
@@ -406,8 +445,10 @@ def scrape_all(sources, setup=False):
 
                 reviews = extract_reviews(html, extra, name)
                 page_text = re.sub(r"<[^>]+>", " ", html).lower()
+                summary = extract_summary(html, extra)
                 if not reviews and any(h in page_text for h in ZERO_HINTS):
-                    statuses[name] = {"ok": True, "fetched": 0}
+                    statuses[name] = {"ok": True, "fetched": 0,
+                                      "summary": {"rating": None, "total_ratings": None, "total_reviews": 0}}
                     print(f"  OK   {name}: is page par abhi koi public review nahi hai")
                     continue
                 if not reviews:
@@ -416,8 +457,9 @@ def scrape_all(sources, setup=False):
                     why = "Block/captcha page aaya" if blocked else "Page khula par reviews nahi pehchaane gaye"
                     raise RuntimeError(f"{why} (page title: '{title[:80]}'). Snapshot: {snap}")
                 results.extend(reviews)
-                statuses[name] = {"ok": True, "fetched": len(reviews)}
-                print(f"  OK   {name}: {len(reviews)} reviews mile")
+                statuses[name] = {"ok": True, "fetched": len(reviews), "summary": summary}
+                total = f" (site par total: {summary['total_reviews']}, rating {summary['rating']})" if summary else ""
+                print(f"  OK   {name}: {len(reviews)} latest reviews mile{total}")
             except Exception as e:
                 statuses[name] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
                 print(f"  FAIL {name}: {str(e).splitlines()[0][:200]}")
@@ -465,6 +507,8 @@ def save_status(statuses):
         prev = old.get(name, {})
         if st["ok"]:
             prev.update({"ok": True, "error": "", "last_success": now, "fetched": st["fetched"]})
+            if st.get("summary"):
+                prev["summary"] = st["summary"]
         else:
             prev.update({"ok": False, "error": st["error"], "last_attempt": now})
         old[name] = prev
