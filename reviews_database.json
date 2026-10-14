@@ -21024,8 +21024,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 487,
-   "last_success": "2026-10-14T12:32:36Z",
+   "fetched": 100,
+   "last_success": "2026-10-14T12:38:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21037,19 +21037,19 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 121,
-   "last_success": "2026-10-14T12:32:37Z",
+   "last_success": "2026-10-14T12:38:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.8,
-    "total_ratings": 3981,
+    "total_ratings": 3980,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 134,
-   "last_success": "2026-10-14T12:32:39Z",
+   "last_success": "2026-10-14T12:38:51Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21061,12 +21061,12 @@
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 441,
-   "last_success": "2026-10-14T12:32:34Z",
+   "last_success": "2026-10-14T12:38:47Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 17863,
+    "total_ratings": 17848,
     "total_reviews": null
    }
   },
@@ -21126,7 +21126,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 278,
-   "last_success": "2026-10-14T12:32:34Z",
+   "last_success": "2026-10-14T12:38:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21138,7 +21138,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 120,
-   "last_success": "2026-10-14T12:32:37Z",
+   "last_success": "2026-10-14T12:38:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21150,7 +21150,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-14T12:32:38Z",
+   "last_success": "2026-10-14T12:38:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21162,12 +21162,12 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-14T12:32:32Z",
+   "last_success": "2026-10-14T12:38:45Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.74,
-    "total_ratings": 8178,
+    "total_ratings": 8179,
     "total_reviews": 757
    }
   },
