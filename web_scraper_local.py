@@ -251,6 +251,47 @@ def html_card_reviews(html, platform):
     return out
 
 
+# Comparably: reviews questions/groups mein hote hain, star rating nahi hoti.
+# Yeh questions "constructive" (sudhaar wale) hain, baaki positive.
+CMP_CONSTRUCTIVE = {"90", "94", "95", "96", "97", "98", "192"}
+
+
+def comparably_reviews(html, platform):
+    def clean(x):
+        x = re.sub(r"<[^>]+>", " ", x or "")
+        return re.sub(r"\s+", " ", unescape(x)).strip()
+
+    out = []
+    blocks = re.split(r'(?=<div data-question-id="\d+" class="reviewsPager")', html)
+    for block in blocks[1:]:
+        qid = re.search(r'data-question-id="(\d+)"', block).group(1)
+        question = clean((re.search(r'<h2 class="section-subtitle">(.*?)</h2>', block, re.S) or [None, ""])[1])
+        cat_m = re.search(r'</h2>\s*(?:<p[^>]*>\s*)?<a[^>]*>\s*([A-Za-z &]+?) Reviews\s*</a>', block)
+        category = cat_m.group(1).strip() if cat_m else "Overall"
+        tone = "Constructive" if qid in CMP_CONSTRUCTIVE else "Positive"
+        for rv in re.findall(r'<div itemprop="review".*?</cite>', block, re.S):
+            text = clean((re.search(r'<p itemprop="reviewBody"[^>]*>(.*?)</p>', rv, re.S) or [None, ""])[1])
+            date = (re.search(r'itemprop="datePublished" content="([\d-]+)"', rv) or [None, ""])[1]
+            dept = clean((re.search(r"<b>(.*?)</b>", rv, re.S) or [None, ""])[1])
+            if not text or not date:
+                continue
+            out.append({"platform": platform, "author": dept or "Anonymous",
+                        "title": f"[{category} · {tone}] {question}"[:300],
+                        "rating": "", "date": date[:10], "text": text[:5000]})
+    return out
+
+
+def comparably_summary(html):
+    m = re.search(r"Out of ([\d,]+) [^<]*?employee reviews, (\d+)% were positive", html)
+    if not m:
+        return None
+    part = re.search(r'companyParticipantsCount"\]=(\d+)', html)
+    return {"rating": None, "total_ratings": None,
+            "total_reviews": int(m.group(1).replace(",", "")),
+            "positive_pct": int(m.group(2)),
+            "participants": int(part.group(1)) if part else None}
+
+
 def json_blobs_from_html(html):
     blobs = next_flight_blobs(html)
     for body in re.findall(r"<script\b[^>]*>(.*?)</script>", html, re.S | re.I):
@@ -289,7 +330,8 @@ def extract_reviews(html, extra_json_strings, platform):
     for b in blobs:
         ex.collect_refs(b)
     out, seen = [], set()
-    found = [r for b in blobs for r in ex.walk(b, platform)] + html_card_reviews(html, platform)
+    found = ([r for b in blobs for r in ex.walk(b, platform)] + html_card_reviews(html, platform)
+             + comparably_reviews(html, platform))
     for r in found:
         k = review_key(r)
         if k not in seen:
@@ -305,6 +347,9 @@ SUM_COUNT_KEYS = ("reviewCount", "totalReviewCount", "numberOfReviews", "totalRe
 
 def extract_summary(html, extra_json_strings):
     """Site ki overall rating aur TOTAL reviews ki ginti (jaise Glassdoor 4.7 · 312)."""
+    cmp = comparably_summary(html)
+    if cmp:
+        return cmp
     blobs = json_blobs_from_html(html)
     for s in extra_json_strings or []:
         try:
@@ -395,6 +440,34 @@ def safe_goto(page, url):
     raise last
 
 
+def comparably_backfill(page, max_pages):
+    """Comparably ke har group ke agle pages (Next button) khol kar unka HTML laata hai."""
+    pages = []
+    qids = page.eval_on_selector_all("div.reviewsPager[data-question-id]",
+                                     "els => els.map(e => e.dataset.questionId)")
+    for q in qids:
+        sel = f'div.reviewsPager[data-question-id="{q}"]'
+        for n in range(2, max_pages + 1):
+            nxt = page.query_selector(f"{sel} a.pager_next")
+            if not nxt or "disabled" in (nxt.get_attribute("class") or ""):
+                break
+            try:
+                before = page.inner_text(f"{sel} .reviewsList")
+                nxt.click()
+                page.wait_for_function(
+                    "([s, b]) => { const e = document.querySelector(s + ' .reviewsList');"
+                    " return e && e.innerText !== b; }", arg=[sel, before], timeout=20000)
+            except Exception:
+                try:
+                    page.wait_for_load_state("domcontentloaded", timeout=20000)
+                except Exception:
+                    pass
+            page.wait_for_timeout(random.randint(1500, 3500))
+            pages.append(page.content())
+            print(f"       backfill: group {q}, page {n}")
+    return pages
+
+
 def human_pause(page):
     page.wait_for_timeout(random.randint(4000, 7000))
     for _ in range(random.randint(3, 6)):
@@ -403,7 +476,7 @@ def human_pause(page):
     page.wait_for_timeout(random.randint(1500, 3000))
 
 
-def scrape_all(sources, setup=False):
+def scrape_all(sources, setup=False, backfill=0):
     from playwright.sync_api import sync_playwright
 
     results, statuses = [], {}
@@ -444,6 +517,9 @@ def scrape_all(sources, setup=False):
                     f.write(html)
 
                 reviews = extract_reviews(html, extra, name)
+                if backfill and name == "Comparably" and reviews:
+                    for more_html in comparably_backfill(page, backfill):
+                        reviews += comparably_reviews(more_html, name)
                 page_text = re.sub(r"<[^>]+>", " ", html).lower()
                 summary = extract_summary(html, extra)
                 if not reviews and any(h in page_text for h in ZERO_HINTS):
@@ -458,7 +534,10 @@ def scrape_all(sources, setup=False):
                     raise RuntimeError(f"{why} (page title: '{title[:80]}'). Snapshot: {snap}")
                 results.extend(reviews)
                 statuses[name] = {"ok": True, "fetched": len(reviews), "summary": summary}
-                total = f" (site par total: {summary['total_reviews']}, rating {summary['rating']})" if summary else ""
+                total = ""
+                if summary:
+                    total = f" (site par total: {summary['total_reviews']}"
+                    total += f", {summary['positive_pct']}% positive)" if summary.get("positive_pct") else f", rating {summary['rating']})"
                 print(f"  OK   {name}: {len(reviews)} latest reviews mile{total}")
             except Exception as e:
                 statuses[name] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
@@ -541,6 +620,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--setup", action="store_true", help="pehli baar login/captcha ke liye")
     ap.add_argument("--no-push", action="store_true")
+    ap.add_argument("--backfill", type=int, default=0, metavar="PAGES",
+                    help="Comparably ke har group ke itne pages tak purane reviews laao (ek baar ke liye)")
     args = ap.parse_args()
 
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -550,7 +631,7 @@ def main():
         return
 
     print(f"=== Web review sync: {dt.datetime.now():%Y-%m-%d %H:%M} ===")
-    reviews, statuses = scrape_all(sources, setup=args.setup)
+    reviews, statuses = scrape_all(sources, setup=args.setup, backfill=args.backfill)
     added = merge_csv(reviews)
     save_status(statuses)
     print(f"  {added} naye reviews {OUT_CSV} mein jude")

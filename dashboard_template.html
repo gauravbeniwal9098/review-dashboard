@@ -85,11 +85,13 @@ function render(){
     return (!plat || kp === plat) && (!app || ka === app);
   }).map(p => {
     const st = DATA.status[p] || {}, rs = list.filter(r => keyOf(r) === p);
-    const avg = rs.length ? (rs.reduce((a,r) => a + Number(r.rating||0), 0) / rs.length).toFixed(2) : "–";
+    const rated = rs.filter(r => r.rating != null && r.rating !== "");
+    const avg = rated.length ? (rated.reduce((a,r) => a + Number(r.rating), 0) / rated.length).toFixed(2) : "–";
     const sum = st.summary || {};
     const saved = DATA.reviews.filter(r => keyOf(r) === p).length;
     let overall = "";
     if (sum.total_ratings) overall = `Store rating ${sum.rating} · ${Number(sum.total_ratings).toLocaleString()} ratings`;
+    else if (sum.positive_pct != null) overall = `${Number(sum.total_reviews).toLocaleString()} total reviews on site · ${sum.positive_pct}% positive${sum.participants ? " · " + sum.participants + " employees" : ""}`;
     else if (sum.total_reviews != null) overall = `Overall ${sum.rating ?? "–"} · ${Number(sum.total_reviews).toLocaleString()} total reviews on site`;
     overall += `${overall ? " · " : ""}${saved} saved here`;
     const label = {manual: "Manual CSV", laptop: "Laptop auto"}[st.source] || "Auto";
@@ -107,7 +109,7 @@ function render(){
   document.getElementById("count").textContent = `${list.length} reviews`;
   document.getElementById("rows").innerHTML = list.slice(0, 1000).map(r => `<tr>
     <td>${esc(r.date)}</td><td>${esc(r.platform)}</td><td>${esc(r.app)}</td>
-    <td class="stars">${"★".repeat(Math.round(r.rating||0))}${"☆".repeat(5-Math.round(r.rating||0))}</td>
+    <td class="stars">${(r.rating == null || r.rating === "") ? '<span class="muted">no stars</span>' : "★".repeat(Math.round(r.rating)) + "☆".repeat(5-Math.round(r.rating))}</td>
     <td>${esc(r.author)}</td><td>${r.title ? "<b>"+esc(r.title)+"</b><br>" : ""}${esc(r.text)}</td></tr>`).join("");
 }
 

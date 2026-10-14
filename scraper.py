@@ -143,9 +143,9 @@ def load_csv_reviews(path):
                 print(f"  ! {path}: galat date '{date}' (YYYY-MM-DD chahiye), row skip")
                 continue
             try:
-                rating = float(row.get("rating") or 0)
+                rating = float(row["rating"]) if (row.get("rating") or "").strip() else None
             except ValueError:
-                rating = 0
+                rating = None
             text = (row.get("text") or "").strip()
             title = (row.get("title") or "").strip()
             by_platform.setdefault(platform, []).append({
