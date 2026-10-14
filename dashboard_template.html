@@ -3,122 +3,295 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Reviews Dashboard</title>
+<title>Altametrics Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;background:#f4f5f7;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1f2430}
-  .wrap{max-width:1160px;margin:0 auto;padding:24px 16px}
-  .card{background:#fff;border:1px solid #e3e6eb;border-radius:10px;padding:18px 20px;margin-bottom:16px}
-  h1{font-size:22px;margin:0 0 4px} .muted{color:#6b7385;font-size:13px}
-  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .btn{background:#f4f5f7;border:1px solid #c9ced6;padding:6px 12px;border-radius:6px;font-size:13px;cursor:pointer}
-  .btn.active{background:#2d56b3;color:#fff;border-color:#2d56b3}
-  select,input{padding:6px 8px;border:1px solid #c9ced6;border-radius:6px;font-size:13px}
-  .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-  .tile{background:#f7f8fa;border:1px solid #edf0f5;border-radius:8px;padding:12px 14px}
-  .tile .name{font-weight:700;font-size:14px} .tile .v{font-size:24px;font-weight:700;margin:4px 0}
-  .ok{color:#137a3a} .bad{color:#c0392b} .small{font-size:12px}
-  .scroll{overflow-x:auto}
-  table{border-collapse:collapse;width:100%} th,td{padding:8px 10px;border-bottom:1px solid #eef0f3;text-align:left;vertical-align:top;font-size:13px}
-  th{font-size:11px;text-transform:uppercase;color:#6b7385;background:#fafbfc}
-  .stars{color:#e0a100;white-space:nowrap}
+  :root{
+    --bg:#F3F5F8; --surface:#FFFFFF; --ink:#18212F; --muted:#5B6676; --line:#E2E6EC;
+    --star:#E8A317; --track:#ECEFF3; --good:#1F8A5B; --alert:#C2410C;
+    --focus:#2F5BD3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#10151D; --surface:#171E29; --ink:#E7ECF3; --muted:#98A3B3; --line:#263040;
+      --star:#F2B53A; --track:#243041; --good:#4CC38A; --alert:#FB8A4C;
+      --focus:#7FA2FF; color-scheme: dark;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Schibsted Grotesk",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+  .num{font-variant-numeric:tabular-nums}
+  button,input,select{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--muted)}
+  .brand{font-weight:700;color:var(--ink);font-size:16px}
+
+  .hero{margin:28px 0 8px}
+  .hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin:0;max-width:22ch}
+  .hero .star{color:var(--star)}
+  .hero p{margin:12px 0 0;color:var(--muted);font-size:16px;max-width:60ch}
+  .hero p.alert{color:var(--alert)}
+
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 30px}
+  .seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .seg button{border:0;background:none;padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--muted);font-weight:500}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+  .controls input[type=date],.controls input[type=search]{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px}
+  .controls .range{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+  .controls input[type=search]{flex:1;min-width:180px}
+
+  .board{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 22px 10px}
+  .group h2{font-size:14px;font-weight:600;color:var(--muted);margin:18px 0 4px}
+  .row{display:grid;grid-template-columns:minmax(150px,1.3fr) 64px minmax(110px,2fr) minmax(130px,1.2fr) 74px;
+    align-items:center;gap:16px;padding:12px 8px;margin:0 -8px;width:calc(100% + 16px);
+    border:0;border-top:1px solid var(--line);border-radius:10px;background:none;text-align:left;cursor:pointer}
+  .group .row:first-of-type{border-top:0}
+  .row:hover{background:var(--bg)}
+  .row[aria-pressed="true"]{background:var(--bg);box-shadow:inset 3px 0 0 var(--ink)}
+  .src{font-weight:600;line-height:1.25}
+  .src small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+  .rating{font-size:22px;font-weight:700}
+  .rating.none{font-size:15px;color:var(--muted);font-weight:500}
+  .bar{height:8px;background:var(--track);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--star);border-radius:99px}
+  .bar.pos i{background:var(--good)}
+  .meta{color:var(--muted);font-size:13px;line-height:1.35}
+  .meta .bad{color:var(--alert)}
+  .new{justify-self:end;text-align:right;font-size:13px;color:var(--muted)}
+  .new b{display:block;font-size:20px;color:var(--ink)}
+  .new.zero b{color:var(--muted);font-weight:500}
+  .health{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--good);margin-right:6px;vertical-align:1px}
+  .health.bad{background:var(--alert)}
+
+  .feedhead{display:flex;justify-content:space-between;align-items:baseline;margin:40px 0 12px;gap:12px;flex-wrap:wrap}
+  .feedhead h2{font-size:22px;margin:0;font-weight:700}
+  .feedhead .meta{font-size:14px}
+  .clear{border:0;background:none;color:var(--focus);cursor:pointer;padding:0;font-weight:500}
+  .feed{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+  .item{padding:18px 22px;border-top:1px solid var(--line)}
+  .item:first-child{border-top:0}
+  .item-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .stars{color:var(--star);letter-spacing:1px;font-size:15px}
+  .tag{border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--ink);font-weight:500}
+  .tag.cons{border-color:var(--alert);color:var(--alert)}
+  .item h3{font-size:16px;margin:8px 0 2px;font-weight:600}
+  .item p{margin:4px 0 0;max-width:75ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .item.open p{display:block}
+  .more-text{border:0;background:none;color:var(--focus);padding:0;margin-top:4px;cursor:pointer;font-size:13px}
+  .author{font-size:13px;color:var(--muted);margin-top:6px}
+  .empty{padding:36px 22px;color:var(--muted);text-align:center}
+  .loadmore{display:block;margin:16px auto 0;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 20px;cursor:pointer;font-weight:500}
+
+  @media (max-width:720px){
+    .row{grid-template-columns:1fr auto;grid-template-areas:"src new" "rating rating" "bar bar" "meta meta";gap:6px 12px}
+    .row .src{grid-area:src}.row .new{grid-area:new}.row .rating{grid-area:rating}
+    .row .bar{grid-area:bar}.row .meta{grid-area:meta}
+    .board,.item{padding-left:16px;padding-right:16px}
+  }
+  @media (prefers-reduced-motion:no-preference){ .bar i{transition:width .6s ease} }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="card">
-    <h1 id="title">Reviews Dashboard</h1>
-    <div class="muted" id="generated"></div>
+  <div class="top">
+    <span class="brand" id="brand">Altametrics reviews</span>
+    <span id="updated" class="num"></span>
   </div>
 
-  <div class="card bar">
-    <button class="btn" data-days="7">Last 7 Days</button>
-    <button class="btn active" data-days="30">Last 30 Days</button>
-    <button class="btn" data-days="90">Last 90 Days</button>
-    <button class="btn" data-days="0">All Time</button>
-    <span class="muted">Custom:</span>
-    <input type="date" id="from"> <span class="muted">to</span> <input type="date" id="to">
-    <select id="platform"><option value="">All platforms</option></select>
-    <select id="app"><option value="">All apps</option></select>
-  </div>
+  <section class="hero" aria-live="polite">
+    <h1 id="headline">Loading reviews</h1>
+    <p id="subline"></p>
+  </section>
 
-  <div class="card"><div class="tiles" id="tiles"></div></div>
-
-  <div class="card">
-    <div class="muted" id="count" style="margin-bottom:8px"></div>
-    <div class="scroll">
-      <table>
-        <thead><tr><th>Date</th><th>Platform</th><th>App</th><th>Rating</th><th>Author</th><th>Review</th></tr></thead>
-        <tbody id="rows"></tbody>
-      </table>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Date range">
+      <button data-days="7" aria-pressed="false">7 days</button>
+      <button data-days="30" aria-pressed="true">30 days</button>
+      <button data-days="90" aria-pressed="false">90 days</button>
+      <button data-days="0" aria-pressed="false">All time</button>
     </div>
+    <span class="range">
+      <input type="date" id="from" aria-label="From date"> to <input type="date" id="to" aria-label="To date">
+    </span>
+    <input type="search" id="q" placeholder="Search review text" aria-label="Search reviews">
   </div>
+
+  <section class="board" id="board" aria-label="Ratings by source"></section>
+
+  <div class="feedhead">
+    <h2 id="feedtitle">Latest reviews</h2>
+    <span class="meta" id="feedmeta"></span>
+  </div>
+  <ul class="feed" id="feed"></ul>
+  <button class="loadmore" id="loadmore" hidden>Show 50 more</button>
 </div>
 
 <script>
 const DATA = __REVIEW_DATA__;
+const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const iso = d => d.toISOString().slice(0,10);
-const fromEl = document.getElementById("from"), toEl = document.getElementById("to"), platEl = document.getElementById("platform");
-
-document.getElementById("title").textContent = `Reviews Dashboard: ${DATA.company} (${DATA.app})`;
-document.getElementById("generated").textContent = "Last sync: " + new Date(DATA.generated).toLocaleString();
-
-const appEl = document.getElementById("app");
+const fmtDate = s => s ? new Date(s + "T00:00:00").toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"}) : "";
+const hasRating = r => r.rating != null && r.rating !== "";
 const keyOf = r => r.app ? `${r.platform} · ${r.app}` : r.platform;
-const tileKeys = [...new Set([...Object.keys(DATA.status), ...DATA.reviews.map(keyOf)])].sort();
-const fill = (el, vals) => vals.forEach(v => el.insertAdjacentHTML("beforeend", `<option>${esc(v)}</option>`));
-fill(platEl, [...new Set(DATA.reviews.map(r => r.platform).concat(tileKeys.map(k => k.split(" · ")[0])))].sort());
-fill(appEl, [...new Set(DATA.reviews.map(r => r.app).concat(tileKeys.filter(k => k.includes(" · ")).map(k => k.split(" · ")[1])))].filter(Boolean).sort());
+const shortApp = a => (a || "").replace(/^Altametrics\s+/, "");
+
+const GROUPS = [
+  {name:"Mobile apps", test:p => p === "App Store" || p === "Google Play"},
+  {name:"Employer reviews", test:p => ["Glassdoor","Indeed","Comparably"].includes(p)},
+  {name:"Software reviews", test:() => true},
+];
+const groupOf = p => GROUPS.findIndex(g => g.test(p));
+
+const sources = [...new Set([...Object.keys(DATA.status), ...DATA.reviews.map(keyOf)])].map(k => {
+  const [platform, app] = k.split(" · ");
+  return {key:k, platform, app:app || ""};
+}).sort((a,b) => (a.app || "~").localeCompare(b.app || "~") || a.platform.localeCompare(b.platform));
+
+const state = {from:"", to:"", q:"", source:"", shown:50};
+
+$("brand").textContent = `${DATA.company} reviews`;
+$("updated").textContent = "Updated " + new Date(DATA.generated).toLocaleString(undefined,{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+
+function health(st){
+  if (!st || st.source === "manual") return {ok:true, text:""};
+  if (st.ok === false) return {ok:false, text:"Last update failed. Run the sync again; if it keeps failing, check the log."};
+  const ageH = st.last_success ? (Date.now() - new Date(st.last_success)) / 36e5 : 1e9;
+  if (ageH > 48) return {ok:false, text: st.last_success ? `No update since ${new Date(st.last_success).toLocaleDateString()}. Check that the laptop sync is running.` : "Never updated yet."};
+  return {ok:true, text:""};
+}
+const inRange = r => (!state.from || r.date >= state.from) && (!state.to || r.date <= state.to);
+function matches(r){
+  if (!inRange(r)) return false;
+  if (state.source && keyOf(r) !== state.source) return false;
+  if (state.q) return `${r.title} ${r.text} ${r.author}`.toLowerCase().includes(state.q.toLowerCase());
+  return true;
+}
+function avg(list){ const rs = list.filter(hasRating); return rs.length ? rs.reduce((a,r) => a + Number(r.rating), 0) / rs.length : null; }
+
+function renderHero(){
+  const list = DATA.reviews.filter(inRange);
+  const a = avg(list);
+  const days = document.querySelector('.seg [aria-pressed="true"]')?.dataset.days;
+  const span = days === "0" ? "in total" : days ? `in the last ${days} days` : "in this period";
+  const avgTxt = a ? `, averaging ${a.toFixed(1)} <span class="star">★</span>` : "";
+  $("headline").innerHTML = days === "0"
+    ? `${list.length.toLocaleString()} reviews collected so far${avgTxt}`
+    : list.length
+      ? `${list.length.toLocaleString()} new review${list.length === 1 ? "" : "s"} ${span}${avgTxt}`
+      : `No new reviews ${span}`;
+  const issues = sources.filter(s => !health(DATA.status[s.key]).ok).map(s => s.app ? `${s.platform} (${shortApp(s.app)})` : s.platform);
+  const sub = $("subline");
+  sub.className = issues.length ? "alert" : "";
+  sub.textContent = issues.length
+    ? `${issues.length} source${issues.length > 1 ? "s need" : " needs"} attention: ${issues.join(", ")}.`
+    : `All ${sources.length} sources updated normally.`;
+}
+
+function renderBoard(){
+  $("board").innerHTML = GROUPS.map((g, gi) => {
+    const items = sources.filter(s => groupOf(s.platform) === gi);
+    if (!items.length) return "";
+    return `<div class="group"><h2>${g.name}</h2>${items.map(s => {
+      const st = DATA.status[s.key] || {}, sum = st.summary || {}, h = health(st);
+      const all = DATA.reviews.filter(r => keyOf(r) === s.key);
+      const n = all.filter(inRange).length;
+      let rating, bar, meta;
+      if (sum.positive_pct != null){
+        rating = `<div class="rating num">${sum.positive_pct}%</div>`;
+        bar = `<div class="bar pos"><i style="width:${sum.positive_pct}%"></i></div>`;
+        meta = `${Number(sum.total_reviews).toLocaleString()} reviews, share positive`;
+      } else if (sum.rating){
+        rating = `<div class="rating num">${Number(sum.rating).toFixed(1)}</div>`;
+        bar = `<div class="bar"><i style="width:${sum.rating / 5 * 100}%"></i></div>`;
+        meta = sum.total_ratings ? `${Number(sum.total_ratings).toLocaleString()} ratings`
+             : sum.total_reviews != null ? `${Number(sum.total_reviews).toLocaleString()} reviews on site` : "";
+      } else {
+        const a = avg(all);
+        rating = a ? `<div class="rating num">${a.toFixed(1)}</div>` : `<div class="rating none">No rating</div>`;
+        bar = `<div class="bar">${a ? `<i style="width:${a / 5 * 100}%"></i>` : ""}</div>`;
+        meta = sum.total_reviews === 0 ? "No public reviews yet" : `${all.length} saved`;
+      }
+      const name = s.app ? `${esc(shortApp(s.app))}<small>${esc(s.platform)}</small>` : esc(s.platform);
+      return `<button class="row" data-key="${esc(s.key)}" aria-pressed="${state.source === s.key}">
+        <span class="src">${name}</span>${rating}${bar}
+        <span class="meta"><span class="health${h.ok ? "" : " bad"}"></span>${esc(meta)}${h.ok ? "" : `<br><span class="bad">${esc(h.text)}</span>`}</span>
+        <span class="new${n ? "" : " zero"}"><b class="num">${n}</b>new</span>
+      </button>`;
+    }).join("")}</div>`;
+  }).join("");
+  $("board").querySelectorAll(".row").forEach(b => b.onclick = () => {
+    state.source = state.source === b.dataset.key ? "" : b.dataset.key;
+    state.shown = 50; render();
+    if (state.source) $("feedtitle").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+}
+
+function renderFeed(){
+  const list = DATA.reviews.filter(matches);
+  const src = sources.find(s => s.key === state.source);
+  $("feedtitle").textContent = src ? `Reviews from ${src.app ? shortApp(src.app) + " on " + src.platform : src.platform}` : "Latest reviews";
+  const a = avg(list);
+  $("feedmeta").innerHTML = `${list.length.toLocaleString()} review${list.length === 1 ? "" : "s"}${a ? `, average ${a.toFixed(1)} ★` : ""}`
+    + (state.source || state.q ? ` <button class="clear" id="clear">Show all sources</button>` : "");
+  const c = $("clear");
+  if (c) c.onclick = () => { state.source = ""; state.q = ""; $("q").value = ""; render(); };
+
+  const feed = $("feed");
+  if (!list.length){
+    feed.innerHTML = `<li class="empty">No reviews match. Try a longer date range or clear the search.</li>`;
+    $("loadmore").hidden = true; return;
+  }
+  feed.innerHTML = list.slice(0, state.shown).map(r => {
+    const r5 = hasRating(r) ? Math.round(Number(r.rating)) : 0;
+    const stars = hasRating(r) ? `<span class="stars" aria-label="${esc(r.rating)} out of 5">${"★".repeat(r5)}${"☆".repeat(5 - r5)}</span>` : "";
+    let title = r.title || "", tag = "";
+    const m = title.match(/^\[(.+?) · (Positive|Constructive)\]\s*(.*)$/);
+    if (m){ tag = `<span class="tag${m[2] === "Constructive" ? " cons" : ""}">${esc(m[1])}${m[2] === "Constructive" ? ", constructive" : ""}</span>`; title = m[3]; }
+    const long = (r.text || "").length > 260;
+    return `<li class="item">
+      <div class="item-top">${stars}<span class="tag">${esc(r.app ? shortApp(r.app) + ", " + r.platform : r.platform)}</span>${tag}<span class="num">${fmtDate(r.date)}</span></div>
+      ${title ? `<h3>${esc(title)}</h3>` : ""}
+      <p>${esc(r.text)}</p>
+      ${long ? `<button class="more-text">Read full review</button>` : ""}
+      ${r.author ? `<div class="author">${esc(r.author)}</div>` : ""}
+    </li>`;
+  }).join("");
+  feed.querySelectorAll(".more-text").forEach(b => b.onclick = () => {
+    const li = b.closest(".item"); li.classList.toggle("open");
+    b.textContent = li.classList.contains("open") ? "Show less" : "Read full review";
+  });
+  const lm = $("loadmore");
+  lm.hidden = list.length <= state.shown;
+  lm.textContent = `Show ${Math.min(50, list.length - state.shown)} more`;
+}
+
+function render(){ renderHero(); renderBoard(); renderFeed(); }
 
 function setPreset(days){
   const today = new Date();
-  toEl.value = iso(today);
-  fromEl.value = days ? iso(new Date(today - days*864e5)) : "";
+  state.to = iso(today); state.from = days ? iso(new Date(today - days * 864e5)) : "";
+  $("from").value = state.from; $("to").value = state.to;
 }
-
-function render(){
-  const from = fromEl.value || "0000", to = toEl.value || "9999", plat = platEl.value, app = appEl.value;
-  const list = DATA.reviews.filter(r => r.date >= from && r.date <= to && (!plat || r.platform === plat) && (!app || r.app === app));
-
-  document.getElementById("tiles").innerHTML = tileKeys.filter(k => {
-    const [kp, ka] = k.split(" · ");
-    return (!plat || kp === plat) && (!app || ka === app);
-  }).map(p => {
-    const st = DATA.status[p] || {}, rs = list.filter(r => keyOf(r) === p);
-    const rated = rs.filter(r => r.rating != null && r.rating !== "");
-    const avg = rated.length ? (rated.reduce((a,r) => a + Number(r.rating), 0) / rated.length).toFixed(2) : "–";
-    const sum = st.summary || {};
-    const saved = DATA.reviews.filter(r => keyOf(r) === p).length;
-    let overall = "";
-    if (sum.total_ratings) overall = `Store rating ${sum.rating} · ${Number(sum.total_ratings).toLocaleString()} ratings`;
-    else if (sum.positive_pct != null) overall = `${Number(sum.total_reviews).toLocaleString()} total reviews on site · ${sum.positive_pct}% positive${sum.participants ? " · " + sum.participants + " employees" : ""}`;
-    else if (sum.total_reviews != null) overall = `Overall ${sum.rating ?? "–"} · ${Number(sum.total_reviews).toLocaleString()} total reviews on site`;
-    overall += `${overall ? " · " : ""}${saved} saved here`;
-    const label = {manual: "Manual CSV", laptop: "Laptop auto"}[st.source] || "Auto";
-    const ageH = st.last_success ? (Date.now() - new Date(st.last_success)) / 36e5 : 1e9;
-    const last = st.last_success ? new Date(st.last_success).toLocaleDateString() : "kabhi nahi";
-    const health = st.ok === false
-      ? `<div class="small bad">FAILED: ${esc(st.error)}<br>Last success: ${last}</div>`
-      : (st.source !== "manual" && ageH > 48)
-        ? `<div class="small bad">${label} · STALE (last ${last})</div>`
-        : `<div class="small ok">${label} · ${last}</div>`;
-    return `<div class="tile"><div class="name">${esc(p)}</div><div class="v">${rs.length}</div>
-      <div class="small muted">reviews in range · avg ${avg}</div><div class="small muted">${esc(overall)}</div>${health}</div>`;
-  }).join("");
-
-  document.getElementById("count").textContent = `${list.length} reviews`;
-  document.getElementById("rows").innerHTML = list.slice(0, 1000).map(r => `<tr>
-    <td>${esc(r.date)}</td><td>${esc(r.platform)}</td><td>${esc(r.app)}</td>
-    <td class="stars">${(r.rating == null || r.rating === "") ? '<span class="muted">no stars</span>' : "★".repeat(Math.round(r.rating)) + "☆".repeat(5-Math.round(r.rating))}</td>
-    <td>${esc(r.author)}</td><td>${r.title ? "<b>"+esc(r.title)+"</b><br>" : ""}${esc(r.text)}</td></tr>`).join("");
-}
-
-document.querySelectorAll(".btn").forEach(b => b.onclick = () => {
-  document.querySelectorAll(".btn").forEach(x => x.classList.remove("active"));
-  b.classList.add("active"); setPreset(Number(b.dataset.days)); render();
+document.querySelectorAll(".seg button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", "false"));
+  b.setAttribute("aria-pressed", "true"); setPreset(Number(b.dataset.days)); state.shown = 50; render();
 });
-[fromEl, toEl].forEach(el => el.onchange = () => { document.querySelectorAll(".btn").forEach(x => x.classList.remove("active")); render(); });
-platEl.onchange = render; appEl.onchange = render;
+["from", "to"].forEach(id => $(id).onchange = () => {
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", "false"));
+  state.from = $("from").value; state.to = $("to").value; state.shown = 50; render();
+});
+let t;
+$("q").oninput = e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value.trim(); state.shown = 50; renderFeed(); }, 200); };
+$("loadmore").onclick = () => { state.shown += 50; renderFeed(); };
+
 setPreset(30); render();
 </script>
 </body>
