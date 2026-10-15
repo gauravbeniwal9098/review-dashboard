@@ -27,7 +27,8 @@ from html import unescape
 WEB_SOURCES = [
     {"platform": "Glassdoor", "url": "https://www.glassdoor.co.in/Reviews/Altametrics-Reviews-E269429.htm?sort.sortType=RD"},
     {"platform": "Indeed", "url": "https://www.indeed.com/cmp/Altametrics/reviews?sort=date_desc"},
-    {"platform": "Comparably", "url": "https://www.comparably.com/companies/altametrics/reviews"},
+    {"platform": "Comparably", "url": "https://www.comparably.com/companies/altametrics/reviews",
+     "warmup": "https://www.comparably.com/companies/altametrics"},
     {"platform": "G2", "url": "https://www.g2.com/products/altametrics/reviews?order=most_recent"},
     {"platform": "Capterra", "url": "https://www.capterra.in/software/16156/erestaurant?sort=most_recent"},
     {"platform": "Software Advice", "url": "https://www.softwareadvice.com/inventory-management/altametrics-profile/reviews/"},
@@ -406,7 +407,16 @@ ZERO_HINTS = ("could be the first review", "be the first to review", "no reviews
               "be the first to write a review")
 
 BLOCK_HINTS = ("just a moment", "verify you are human", "access denied", "captcha",
-               "are you a robot", "security check", "attention required")
+               "are you a robot", "security check", "attention required",
+               "has been denied", "press & hold")
+
+
+def is_blocked(page, html):
+    try:
+        title = page.title() or ""
+    except Exception:
+        title = ""
+    return any(h in (title + html[:5000]).lower() for h in BLOCK_HINTS)
 
 
 def launch(p):
@@ -499,13 +509,32 @@ def scrape_all(sources, setup=False, backfill=0):
             name = s["platform"]
             page = ctx.new_page()
             try:
+                if s.get("warmup"):
+                    # Seedha reviews page kholne ki jagah pehle company page, jaise insaan karta hai
+                    safe_goto(page, s["warmup"])
+                    human_pause(page)
                 safe_goto(page, s["url"])
                 human_pause(page)
                 html = page.content()
-                if any(h in ((page.title() or "") + html[:5000]).lower() for h in BLOCK_HINTS):
-                    print(f"  ..   {name}: bot-check aaya, 20 sec ruk kar dobara try")
-                    page.wait_for_timeout(20000)
-                    safe_goto(page, s["url"])
+                for attempt in range(2):
+                    if not is_blocked(page, html):
+                        break
+                    print(f"  ..   {name}: bot-check aaya. Chrome window mein 'Press & Hold' dikhe to "
+                          f"use daba kar rakhein. 60 sec tak wait kar raha hoon...")
+                    for _ in range(12):
+                        page.wait_for_timeout(5000)
+                        try:
+                            html = page.content()
+                        except Exception:
+                            continue
+                        if not is_blocked(page, html):
+                            break
+                    if is_blocked(page, html) and attempt == 0:
+                        page.wait_for_timeout(random.randint(8000, 15000))
+                        safe_goto(page, s["url"])
+                        human_pause(page)
+                        html = page.content()
+                if not is_blocked(page, html):
                     human_pause(page)
                     html = page.content()
                 try:
