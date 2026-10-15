@@ -21035,7 +21035,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-15T10:43:16Z",
+   "last_success": "2026-10-15T10:44:24Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21047,19 +21047,19 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-15T10:43:16Z",
+   "last_success": "2026-10-15T10:44:25Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.8,
-    "total_ratings": 3981,
+    "total_ratings": 3980,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 50,
-   "last_success": "2026-10-15T10:43:17Z",
+   "last_success": "2026-10-15T10:44:25Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21071,12 +21071,12 @@
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-15T10:43:15Z",
+   "last_success": "2026-10-15T10:44:23Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 17897,
+    "total_ratings": 17878,
     "total_reviews": null
    }
   },
@@ -21136,7 +21136,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 278,
-   "last_success": "2026-10-15T10:43:16Z",
+   "last_success": "2026-10-15T10:44:24Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21148,7 +21148,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 120,
-   "last_success": "2026-10-15T10:43:16Z",
+   "last_success": "2026-10-15T10:44:24Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21160,7 +21160,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-15T10:43:17Z",
+   "last_success": "2026-10-15T10:44:25Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21172,7 +21172,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-15T10:43:15Z",
+   "last_success": "2026-10-15T10:44:23Z",
    "ok": true,
    "source": "auto",
    "summary": {
