@@ -6952,7 +6952,7 @@
   },
   "gp_e2dffdbe-2c98-4d7e-956d-ca4aa27dd699": {
    "app": "Altametrics Schedules",
-   "author": "Google userrr",
+   "author": "Rose olive",
    "date": "2026-07-01",
    "id": "gp_e2dffdbe-2c98-4d7e-956d-ca4aa27dd699",
    "platform": "Google Play",
@@ -20680,6 +20680,16 @@
    "text": "Because they dont pay well and be wfirs sicks",
    "title": "[Compensation · Constructive] Why do you feel undervalued and what would make you feel better about your compensation?"
   },
+  "m_b6953cb03fcb7bd4": {
+   "app": "",
+   "author": "Engineering Dept",
+   "date": "2026-10-12",
+   "id": "m_b6953cb03fcb7bd4",
+   "platform": "Comparably",
+   "rating": null,
+   "text": "The interview process was straightforward, and the discussions helped me understand the role and the kind of work I would be doing.",
+   "title": "[Interviews · Positive] What did you like most about the interview process?"
+  },
   "m_b6f82ba439e07516": {
    "app": "",
    "author": "Product Dept",
@@ -21025,7 +21035,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-15T06:05:26Z",
+   "last_success": "2026-10-15T10:43:16Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21037,7 +21047,7 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-15T06:05:27Z",
+   "last_success": "2026-10-15T10:43:16Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21048,8 +21058,8 @@
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-15T06:05:27Z",
+   "fetched": 50,
+   "last_success": "2026-10-15T10:43:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21061,7 +21071,7 @@
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-15T06:05:26Z",
+   "last_success": "2026-10-15T10:43:15Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21074,7 +21084,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-14T12:32:15Z",
+   "last_success": "2026-10-15T10:43:00Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21084,24 +21094,24 @@
    }
   },
   "Comparably": {
-   "error": "RuntimeError: Block/captcha page aaya (page title: 'Access to this page has been denied'). Snapshot: snapshots\\Comparably.html",
+   "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-10-14T12:28:19Z",
-   "ok": false,
+   "last_success": "2026-10-15T10:43:00Z",
+   "ok": true,
    "source": "laptop",
    "summary": {
     "participants": 337,
     "positive_pct": 99,
     "rating": null,
     "total_ratings": null,
-    "total_reviews": 1420
+    "total_reviews": 1421
    }
   },
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-10-14T12:32:15Z",
+   "last_success": "2026-10-15T10:43:00Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21114,7 +21124,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-14T12:32:15Z",
+   "last_success": "2026-10-15T10:43:00Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21126,7 +21136,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 278,
-   "last_success": "2026-10-15T06:05:26Z",
+   "last_success": "2026-10-15T10:43:16Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21138,7 +21148,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 120,
-   "last_success": "2026-10-15T06:05:27Z",
+   "last_success": "2026-10-15T10:43:16Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21150,7 +21160,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-15T06:05:27Z",
+   "last_success": "2026-10-15T10:43:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21162,19 +21172,19 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-15T06:05:26Z",
+   "last_success": "2026-10-15T10:43:15Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.74,
-    "total_ratings": 8171,
+    "total_ratings": 8172,
     "total_reviews": 751
    }
   },
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-10-14T12:32:15Z",
+   "last_success": "2026-10-15T10:43:00Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21187,7 +21197,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-14T12:32:15Z",
+   "last_success": "2026-10-15T10:43:00Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21200,7 +21210,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-14T12:32:15Z",
+   "last_success": "2026-10-15T10:43:00Z",
    "ok": true,
    "source": "laptop",
    "summary": {
