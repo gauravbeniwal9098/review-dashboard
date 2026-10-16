@@ -20290,6 +20290,16 @@
    "text": "I got to work on different technical tasks and learned a lot about improving existing systems. The work also gave me opportunities to collaborate with other teams and understand how software is used in day-to-day business operations.",
    "title": "A decent place for a software engineer to gain practical experience"
   },
+  "m_461cc84f61566f75": {
+   "app": "",
+   "author": "Engineering Dept",
+   "date": "2026-10-12",
+   "id": "m_461cc84f61566f75",
+   "platform": "Comparably",
+   "rating": null,
+   "text": "The work environment gives you a chance to learn and improve your skills. People can share ideas, take responsibility for their work, and gain experience along the way.",
+   "title": "[Environment · Positive] What is most positive about the culture and environment at your company?"
+  },
   "m_475402ba5ebd54d3": {
    "app": "",
    "author": "Anonymous",
@@ -20359,6 +20369,16 @@
    "rating": null,
    "text": "The compensation is fair for the role, and I appreciate that the overall package is competitive for the work and responsibilities involved.",
    "title": "[Compensation · Positive] What is the best part about your compensation package?"
+  },
+  "m_556219fbf34aa976": {
+   "app": "",
+   "author": "Engineering Dept",
+   "date": "2026-10-12",
+   "id": "m_556219fbf34aa976",
+   "platform": "Comparably",
+   "rating": null,
+   "text": "The leadership team focuses on business growth and gives employees the opportunity to take responsibility for their work.",
+   "title": "[Leadership · Positive] What do you like best about the leadership team?"
   },
   "m_56129a2555efbfac": {
    "app": "",
@@ -21194,8 +21214,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-16T08:07:44Z",
+   "fetched": 50,
+   "last_success": "2026-10-16T08:09:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21207,7 +21227,7 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-16T08:07:45Z",
+   "last_success": "2026-10-16T08:09:51Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21218,8 +21238,8 @@
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-16T08:07:46Z",
+   "fetched": 50,
+   "last_success": "2026-10-16T08:09:52Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21231,12 +21251,12 @@
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 50,
-   "last_success": "2026-10-16T08:07:43Z",
+   "last_success": "2026-10-16T08:09:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 17906,
+    "total_ratings": 17897,
     "total_reviews": null
    }
   },
@@ -21244,7 +21264,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21257,7 +21277,7 @@
    "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21265,13 +21285,13 @@
     "positive_pct": 99,
     "rating": null,
     "total_ratings": null,
-    "total_reviews": 1421
+    "total_reviews": 1423
    }
   },
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21284,7 +21304,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21296,7 +21316,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 278,
-   "last_success": "2026-10-16T08:07:44Z",
+   "last_success": "2026-10-16T08:09:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21308,7 +21328,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 120,
-   "last_success": "2026-10-16T08:07:45Z",
+   "last_success": "2026-10-16T08:09:51Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21320,7 +21340,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-16T08:07:46Z",
+   "last_success": "2026-10-16T08:09:51Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21332,7 +21352,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-16T08:07:43Z",
+   "last_success": "2026-10-16T08:09:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21344,7 +21364,7 @@
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21357,7 +21377,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21370,7 +21390,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-15T10:43:00Z",
+   "last_success": "2026-10-16T08:09:34Z",
    "ok": true,
    "source": "laptop",
    "summary": {
