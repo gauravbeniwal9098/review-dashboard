@@ -7112,7 +7112,7 @@
   },
   "gp_e6928070-4647-4e6b-94b3-fab6aa4ee870": {
    "app": "Altametrics Schedules",
-   "author": "Emily",
+   "author": "Essa",
    "date": "2026-09-05",
    "id": "gp_e6928070-4647-4e6b-94b3-fab6aa4ee870",
    "platform": "Google Play",
@@ -21194,8 +21194,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 487,
-   "last_success": "2026-10-16T06:03:05Z",
+   "fetched": 0,
+   "last_success": "2026-10-16T08:07:44Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21206,8 +21206,8 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 121,
-   "last_success": "2026-10-16T06:03:06Z",
+   "fetched": 0,
+   "last_success": "2026-10-16T08:07:45Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21218,8 +21218,8 @@
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 134,
-   "last_success": "2026-10-16T06:03:07Z",
+   "fetched": 0,
+   "last_success": "2026-10-16T08:07:46Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21230,8 +21230,8 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 453,
-   "last_success": "2026-10-16T06:03:03Z",
+   "fetched": 50,
+   "last_success": "2026-10-16T08:07:43Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21296,7 +21296,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 278,
-   "last_success": "2026-10-16T06:03:03Z",
+   "last_success": "2026-10-16T08:07:44Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21308,7 +21308,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 120,
-   "last_success": "2026-10-16T06:03:05Z",
+   "last_success": "2026-10-16T08:07:45Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21320,7 +21320,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-16T06:03:06Z",
+   "last_success": "2026-10-16T08:07:46Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21332,7 +21332,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-16T06:03:01Z",
+   "last_success": "2026-10-16T08:07:43Z",
    "ok": true,
    "source": "auto",
    "summary": {
