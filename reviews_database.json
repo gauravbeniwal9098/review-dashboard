@@ -5232,7 +5232,7 @@
   },
   "gp_aa94128c-b369-446a-ba40-ad3ff3ab9aa5": {
    "app": "Altametrics Schedules",
-   "author": "Henry",
+   "author": "Henry 72",
    "date": "2026-10-11",
    "id": "gp_aa94128c-b369-446a-ba40-ad3ff3ab9aa5",
    "platform": "Google Play",
@@ -17810,6 +17810,16 @@
    "text": "Describe one thing that works well for you and one thing you would change.",
    "title": "My Scheduling Feedback"
   },
+  "ios_14672282917": {
+   "app": "Altametrics Schedules",
+   "author": "Nu4ever",
+   "date": "2026-10-15",
+   "id": "ios_14672282917",
+   "platform": "App Store",
+   "rating": 1,
+   "text": "This app is so awful and it is down constantly 👎👎👎👎👎👎👎👎👎👎👎👎👎👎",
+   "title": "Boo"
+  },
   "ios_1786000653": {
    "app": "Altametrics Schedules",
    "author": "Your boy, blue",
@@ -20880,6 +20890,16 @@
    "text": "Pros: This app has made managing our inventory an effortless experience.The app's features for inventory control, variance checks, and offline counting are superb. All storage locations in one place and the detailed inventory counts provide a thorough understanding. ChitChat adds a personal touch to team communication. | Cons: Delete chat feature is not available in the chitchat.",
    "title": "A solid 5-star app!"
   },
+  "m_83136626cc87dc3d": {
+   "app": "",
+   "author": "Engineering Dept",
+   "date": "2026-10-12",
+   "id": "m_83136626cc87dc3d",
+   "platform": "Comparably",
+   "rating": null,
+   "text": "The team is helpful, and people are generally willing to support each other when needed. It’s good to work with people who share knowledge and help get things don",
+   "title": "[Team · Positive] What are some of the best things about your team?"
+  },
   "m_840c7659bde470d2": {
    "app": "",
    "author": "Engineering Dept",
@@ -21474,8 +21494,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-21T06:14:37Z",
+   "fetched": 50,
+   "last_success": "2026-10-21T08:33:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21486,8 +21506,8 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 50,
-   "last_success": "2026-10-21T06:14:38Z",
+   "fetched": 0,
+   "last_success": "2026-10-21T08:33:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21499,7 +21519,7 @@
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-21T06:14:38Z",
+   "last_success": "2026-10-21T08:33:19Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21510,8 +21530,8 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-21T06:14:36Z",
+   "fetched": 100,
+   "last_success": "2026-10-21T08:33:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21524,7 +21544,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21537,7 +21557,7 @@
    "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21545,13 +21565,13 @@
     "positive_pct": 99,
     "rating": null,
     "total_ratings": null,
-    "total_reviews": 1423
+    "total_reviews": 1424
    }
   },
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21564,19 +21584,19 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
     "rating": 4.7,
     "total_ratings": null,
-    "total_reviews": 312
+    "total_reviews": 313
    }
   },
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 278,
-   "last_success": "2026-10-21T06:14:37Z",
+   "last_success": "2026-10-21T08:33:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21588,7 +21608,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 129,
-   "last_success": "2026-10-21T06:14:37Z",
+   "last_success": "2026-10-21T08:33:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21600,7 +21620,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-21T06:14:38Z",
+   "last_success": "2026-10-21T08:33:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21612,7 +21632,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-21T06:14:36Z",
+   "last_success": "2026-10-21T08:33:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21624,7 +21644,7 @@
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21637,7 +21657,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21650,7 +21670,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-16T08:09:34Z",
+   "last_success": "2026-10-21T08:33:01Z",
    "ok": true,
    "source": "laptop",
    "summary": {
