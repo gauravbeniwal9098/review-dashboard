@@ -21605,7 +21605,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 50,
-   "last_success": "2026-10-23T06:12:00Z",
+   "last_success": "2026-10-23T09:43:56Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21616,37 +21616,37 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 100,
-   "last_success": "2026-10-23T06:12:01Z",
+   "fetched": 0,
+   "last_success": "2026-10-23T09:43:57Z",
    "ok": true,
    "source": "auto",
    "summary": {
-    "rating": 4.81,
-    "total_ratings": 3993,
+    "rating": 4.8,
+    "total_ratings": 3995,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-23T06:12:01Z",
+   "fetched": 50,
+   "last_success": "2026-10-23T09:43:57Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.67,
-    "total_ratings": 1400,
+    "total_ratings": 1401,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 50,
-   "last_success": "2026-10-23T06:11:59Z",
+   "fetched": 0,
+   "last_success": "2026-10-23T09:43:56Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18001,
+    "total_ratings": 18010,
     "total_reviews": null
    }
   },
@@ -21654,7 +21654,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21667,7 +21667,7 @@
    "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21681,7 +21681,7 @@
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21694,7 +21694,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21706,7 +21706,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-10-23T06:11:59Z",
+   "last_success": "2026-10-23T09:43:56Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21718,7 +21718,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 135,
-   "last_success": "2026-10-23T06:12:00Z",
+   "last_success": "2026-10-23T09:43:57Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21730,7 +21730,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-23T06:12:01Z",
+   "last_success": "2026-10-23T09:43:57Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21742,7 +21742,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-23T06:11:58Z",
+   "last_success": "2026-10-23T09:43:55Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21754,7 +21754,7 @@
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21767,7 +21767,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21780,7 +21780,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-21T08:33:01Z",
+   "last_success": "2026-10-23T09:43:37Z",
    "ok": true,
    "source": "laptop",
    "summary": {
