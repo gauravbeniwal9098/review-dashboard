@@ -3,7 +3,7 @@
   "ok": true,
   "error": "",
   "last_attempt": "2026-10-13T15:26:03Z",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 5,
   "summary": {
    "rating": 4.7,
@@ -14,7 +14,7 @@
  "Indeed": {
   "ok": true,
   "error": "",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 20,
   "summary": {
    "rating": 4.7,
@@ -26,7 +26,7 @@
   "ok": true,
   "error": "",
   "last_attempt": "2026-10-14T12:32:15Z",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 53,
   "summary": {
    "rating": null,
@@ -39,7 +39,7 @@
  "G2": {
   "ok": true,
   "error": "",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 10,
   "summary": {
    "rating": 4.9,
@@ -51,7 +51,7 @@
   "ok": true,
   "error": "",
   "last_attempt": "2026-10-13T15:26:03Z",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 5,
   "summary": {
    "rating": 4.6,
@@ -63,7 +63,7 @@
   "ok": true,
   "error": "",
   "last_attempt": "2026-10-13T15:26:03Z",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 25,
   "summary": {
    "rating": 4.6,
@@ -75,7 +75,7 @@
   "ok": true,
   "error": "",
   "last_attempt": "2026-10-13T15:26:03Z",
-  "last_success": "2026-10-27T09:23:45Z",
+  "last_success": "2026-10-27T10:21:25Z",
   "fetched": 0,
   "summary": {
    "rating": null,
