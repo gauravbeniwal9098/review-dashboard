@@ -10352,7 +10352,7 @@
   },
   "ios_12099881294": {
    "app": "Altametrics Clock",
-   "author": "Palumbo Nance_",
+   "author": "lileevi贇v_",
    "date": "2024-12-24",
    "id": "ios_12099881294",
    "platform": "App Store",
@@ -18200,6 +18200,26 @@
    "text": "Describe your experience accessing the app, mentioning any issues only if you encountered them.",
    "title": "Login and Access Feedback"
   },
+  "ios_14711586047": {
+   "app": "Altametrics Schedules",
+   "author": "Kwanzxs",
+   "date": "2026-10-25",
+   "id": "ios_14711586047",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Good",
+   "title": "Up"
+  },
+  "ios_14711729940": {
+   "app": "Altametrics Schedules",
+   "author": "Lindsie82",
+   "date": "2026-10-25",
+   "id": "ios_14711729940",
+   "platform": "App Store",
+   "rating": 2,
+   "text": "This app is always changing. Currently the request off/ time off feature is gone. Approving shift swaps is gone. Been emailing back and forth with support for weeks and no resolution.",
+   "title": "Lots of regular issues"
+  },
   "ios_14711985837": {
    "app": "Altametrics DAR",
    "author": "bond brock",
@@ -21894,8 +21914,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-27T09:24:04Z",
+   "fetched": 487,
+   "last_success": "2026-10-27T10:21:44Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21906,20 +21926,20 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 50,
-   "last_success": "2026-10-27T09:24:05Z",
+   "fetched": 142,
+   "last_success": "2026-10-27T10:21:45Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4019,
+    "total_ratings": 4018,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-27T09:24:05Z",
+   "fetched": 134,
+   "last_success": "2026-10-27T10:21:46Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -21930,13 +21950,13 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-10-27T09:24:03Z",
+   "fetched": 436,
+   "last_success": "2026-10-27T10:21:43Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18076,
+    "total_ratings": 18064,
     "total_reviews": null
    }
   },
@@ -21944,7 +21964,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21957,7 +21977,7 @@
    "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21971,7 +21991,7 @@
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21984,7 +22004,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -21996,7 +22016,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-10-27T09:24:04Z",
+   "last_success": "2026-10-27T10:21:43Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22008,7 +22028,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 138,
-   "last_success": "2026-10-27T09:24:04Z",
+   "last_success": "2026-10-27T10:21:44Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22020,7 +22040,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 87,
-   "last_success": "2026-10-27T09:24:05Z",
+   "last_success": "2026-10-27T10:21:45Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22032,7 +22052,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-27T09:24:03Z",
+   "last_success": "2026-10-27T10:21:42Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22044,7 +22064,7 @@
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -22057,7 +22077,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -22070,7 +22090,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-10-23T09:43:37Z",
+   "last_success": "2026-10-27T10:21:25Z",
    "ok": true,
    "source": "laptop",
    "summary": {
