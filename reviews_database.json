@@ -790,6 +790,16 @@
    "text": "data is always way behide",
    "title": ""
   },
+  "gp_1870d8ab-c4c8-43c6-b065-eb66d9f3c214": {
+   "app": "Altametrics DAR",
+   "author": "Leo Leo",
+   "date": "2026-10-29",
+   "id": "gp_1870d8ab-c4c8-43c6-b065-eb66d9f3c214",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "Altametrics ERS Dashboard looks like a useful app for managing work tasks and accessing dashboard information. Its features may help make daily work more organized and convenient. A helpful option for users looking for workplace management tools!",
+   "title": ""
+  },
   "gp_18e83c0a-01e7-44e4-8f5c-e1a83fa1cddc": {
    "app": "Altametrics Inventory Pro",
    "author": "A Google user",
@@ -6230,6 +6240,16 @@
    "text": "The app offers a practical way to access essential work information. Its simple design makes the overall experience convenient.",
    "title": ""
   },
+  "gp_c0fcf592-52d7-4a41-b425-e3115cf52815": {
+   "app": "Altametrics DAR",
+   "author": "Marie Clones",
+   "date": "2026-10-29",
+   "id": "gp_c0fcf592-52d7-4a41-b425-e3115cf52815",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "This app is an absolute masterpiece for checking in on store-wise rankings and daily activity reports across multiple locations. It gives me all the business intelligence and operational snapshots I need to stay informed while traveling between units.",
+   "title": ""
+  },
   "gp_c12fc6a4-89a8-4f79-85bf-d5df93b24688": {
    "app": "Altametrics Schedules",
    "author": "Aliho mangio",
@@ -7260,6 +7280,16 @@
    "text": "one The Best and free application for setting up schedule.it works perfectly..",
    "title": ""
   },
+  "gp_db60b9a1-0170-456e-bccc-844323ef6a2b": {
+   "app": "Altametrics Inventory Pro",
+   "author": "Heather Moore",
+   "date": "2026-10-30",
+   "id": "gp_db60b9a1-0170-456e-bccc-844323ef6a2b",
+   "platform": "Google Play",
+   "rating": 1,
+   "text": "altametrics as a whole SUCKS! the communication to our systems is subpar at best. it's constantly messing something up every single day. I wish our company would change to another platform.",
+   "title": ""
+  },
   "gp_db6f0b06-b963-4b42-a2d1-bbe746f7e04e": {
    "app": "Altametrics Schedules",
    "author": "Jason Robert",
@@ -7448,6 +7478,16 @@
    "platform": "Google Play",
    "rating": 5,
    "text": "This app is easy to use and makes managing work tasks much more convenient. The interface is simple, and I can quickly access the information I need. Overall, a useful app for keeping daily work organized..",
+   "title": ""
+  },
+  "gp_e1fca94b-2620-41fe-9f41-efd96b193730": {
+   "app": "Altametrics DAR",
+   "author": "Fellia Fellia",
+   "date": "2026-10-29",
+   "id": "gp_e1fca94b-2620-41fe-9f41-efd96b193730",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "\"Very professional and useful app! ERS Dashboard is easy to navigate and shows all data clearly. Great performance and very helpful for work management!",
    "title": ""
   },
   "gp_e2a14861-5839-4ac5-b1cc-33f626c93978": {
@@ -22125,7 +22165,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-30T07:25:57Z",
+   "last_success": "2026-10-31T07:13:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22137,36 +22177,36 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-30T07:25:58Z",
+   "last_success": "2026-10-31T07:13:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4038,
+    "total_ratings": 4040,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 50,
-   "last_success": "2026-10-30T07:25:59Z",
+   "fetched": 0,
+   "last_success": "2026-10-31T07:13:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1403,
+    "total_ratings": 1405,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-10-30T07:25:57Z",
+   "last_success": "2026-10-31T07:13:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
-    "rating": 0.0,
-    "total_ratings": 0,
+    "rating": 4.7,
+    "total_ratings": 18123,
     "total_reviews": null
    }
   },
@@ -22226,7 +22266,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-10-30T07:25:57Z",
+   "last_success": "2026-10-31T07:13:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22237,37 +22277,37 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 147,
-   "last_success": "2026-10-30T07:25:58Z",
+   "fetched": 140,
+   "last_success": "2026-10-31T07:13:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.77,
-    "total_ratings": 986,
-    "total_reviews": 105
+    "total_ratings": 979,
+    "total_reviews": 101
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 87,
-   "last_success": "2026-10-30T07:25:58Z",
+   "fetched": 88,
+   "last_success": "2026-10-31T07:13:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
-    "rating": 4.81,
-    "total_ratings": 608,
+    "rating": 4.77,
+    "total_ratings": 609,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-10-30T07:25:56Z",
+   "last_success": "2026-10-31T07:13:47Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8251,
+    "total_ratings": 8257,
     "total_reviews": 743
    }
   },
