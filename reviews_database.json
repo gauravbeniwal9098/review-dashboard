@@ -360,6 +360,16 @@
    "text": "Work",
    "title": ""
   },
+  "gp_0b51120d-6ef8-4035-b709-6f0d088d0671": {
+   "app": "Altametrics DAR",
+   "author": "Kashai Jerry.",
+   "date": "2026-10-31",
+   "id": "gp_0b51120d-6ef8-4035-b709-6f0d088d0671",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "this app is very awesome app . I am also used this app so very fast work ..",
+   "title": ""
+  },
   "gp_0b56cb97-a65a-448d-a439-f4ba7b41f283": {
    "app": "Altametrics DAR",
    "author": "Kevin Horton",
@@ -6230,6 +6240,16 @@
    "text": "Manager of mcdonalds in Montana. It's easy access.",
    "title": ""
   },
+  "gp_bf81e91a-d486-42dc-9b12-6fe19caaf5d4": {
+   "app": "Altametrics DAR",
+   "author": "Charlotte Blake",
+   "date": "2026-10-31",
+   "id": "gp_bf81e91a-d486-42dc-9b12-6fe19caaf5d4",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "its a wonderful app.its interface is quite easy and easy to control.i like it very much.i have some issue and this app quickly fix this problem..",
+   "title": ""
+  },
   "gp_bf96d792-371e-46bf-a0a6-f1c69124c682": {
    "app": "Altametrics Schedules",
    "author": "Irwin Ruiz",
@@ -7343,11 +7363,11 @@
   "gp_db60b9a1-0170-456e-bccc-844323ef6a2b": {
    "app": "Altametrics Inventory Pro",
    "author": "Heather Moore",
-   "date": "2026-10-30",
+   "date": "2026-10-31",
    "id": "gp_db60b9a1-0170-456e-bccc-844323ef6a2b",
    "platform": "Google Play",
    "rating": 1,
-   "text": "altametrics as a whole SUCKS! the communication to our systems is subpar at best. it's constantly messing something up every single day. I wish our company would change to another platform.",
+   "text": "altametrics as a whole SUCKS! the communication to our systems is subpar at best. it's constantly messing something up every single day. I wish our company would change to another platform. **the latest update you did has completely screwed up EVERYTHING at our store and is changing clock times. the app hasn't been accurate for MONTHS for schedules. it'll tell someone they are off when they aren't and vice versa. At least our GM knows it's trash and looks for the mistakes**",
    "title": ""
   },
   "gp_db6f0b06-b963-4b42-a2d1-bbe746f7e04e": {
@@ -7738,6 +7758,16 @@
    "platform": "Google Play",
    "rating": 5,
    "text": "It worked the first time I opened the app and now it's refusing to work anytime I open the app I'm stuck on a constant loading screen and when I think it's finally done loading it pauses for 2 seconds and then continues loading. and it's not an Wi-Fi problem so idek what's causing it to not load properly. THANK YOU FOR HELPING ME FIX THE APP IT WORKS AMAZING NOW👍👍",
+   "title": ""
+  },
+  "gp_e77f83a9-413b-446b-a3fe-11d1b2de986a": {
+   "app": "Altametrics DAR",
+   "author": "Lura James",
+   "date": "2026-11-01",
+   "id": "gp_e77f83a9-413b-446b-a3fe-11d1b2de986a",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "my experience with this application is truely amazing. I had an issue they fix it immediately highly recommended.",
    "title": ""
   },
   "gp_e79581b1-471e-4a44-a4ed-b8bf39ac51b9": {
@@ -8148,6 +8178,16 @@
    "platform": "Google Play",
    "rating": 5,
    "text": "amazing application helps me managing the daily schedule smoothly",
+   "title": ""
+  },
+  "gp_f3a4588a-0f16-4244-90ea-a74091125778": {
+   "app": "Altametrics DAR",
+   "author": "Lizza007",
+   "date": "2026-10-31",
+   "id": "gp_f3a4588a-0f16-4244-90ea-a74091125778",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "Altametrics DAR is a useful app for tracking sales, labor performance, and business activity. It provides helpful reports and clear insights to make better business decisions. Great tool for managing daily operations..",
    "title": ""
   },
   "gp_f46dcc1f-4b00-4097-9275-3999cbfd4329": {
@@ -22434,8 +22474,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 487,
-   "last_success": "2026-11-01T07:46:10Z",
+   "fetched": 0,
+   "last_success": "2026-11-02T07:53:31Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22446,20 +22486,20 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 162,
-   "last_success": "2026-11-01T07:46:11Z",
+   "fetched": 0,
+   "last_success": "2026-11-02T07:53:31Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4047,
+    "total_ratings": 4049,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 134,
-   "last_success": "2026-11-01T07:46:12Z",
+   "fetched": 0,
+   "last_success": "2026-11-02T07:53:32Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22470,13 +22510,13 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 436,
-   "last_success": "2026-11-01T07:46:08Z",
+   "fetched": 0,
+   "last_success": "2026-11-02T07:53:30Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18141,
+    "total_ratings": 18154,
     "total_reviews": null
    }
   },
@@ -22536,7 +22576,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-01T07:46:09Z",
+   "last_success": "2026-11-02T07:53:30Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22547,38 +22587,38 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 146,
-   "last_success": "2026-11-01T07:46:10Z",
+   "fetched": 150,
+   "last_success": "2026-11-02T07:53:31Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.77,
-    "total_ratings": 986,
-    "total_reviews": 104
+    "total_ratings": 992,
+    "total_reviews": 107
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 87,
-   "last_success": "2026-11-01T07:46:11Z",
+   "fetched": 88,
+   "last_success": "2026-11-02T07:53:31Z",
    "ok": true,
    "source": "auto",
    "summary": {
-    "rating": 4.81,
-    "total_ratings": 608,
+    "rating": 4.77,
+    "total_ratings": 609,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-01T07:46:07Z",
+   "last_success": "2026-11-02T07:53:30Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8262,
-    "total_reviews": 743
+    "total_ratings": 8268,
+    "total_reviews": 744
    }
   },
   "Indeed": {
