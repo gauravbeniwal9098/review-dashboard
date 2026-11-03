@@ -700,6 +700,16 @@
    "text": "A simple and reliable clock app with a clean design and useful features that make keeping track of time easy and convenient.",
    "title": ""
   },
+  "gp_14979024-ad8a-42cf-8c1c-5a5e2a35130e": {
+   "app": "Altametrics DAR",
+   "author": "Branden Burg",
+   "date": "2026-11-01",
+   "id": "gp_14979024-ad8a-42cf-8c1c-5a5e2a35130e",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "this is wonderful app for marketing Quick service & no delay",
+   "title": ""
+  },
   "gp_14adf58c-2850-45c9-8f00-413200d9e1ad": {
    "app": "Altametrics Schedules",
    "author": "sidra uniquee",
@@ -3562,7 +3572,7 @@
   },
   "gp_742dd131-aefe-4a0a-aa13-89958368af59": {
    "app": "Altametrics Schedules",
-   "author": "Harry Singh",
+   "author": "A Google user",
    "date": "2026-10-09",
    "id": "gp_742dd131-aefe-4a0a-aa13-89958368af59",
    "platform": "Google Play",
@@ -8032,7 +8042,7 @@
   },
   "gp_ef566fe1-a12d-47ac-b134-1fb41b1a9077": {
    "app": "Altametrics Schedules",
-   "author": "Eshan Khan",
+   "author": "Elowen",
    "date": "2026-10-03",
    "id": "gp_ef566fe1-a12d-47ac-b134-1fb41b1a9077",
    "platform": "Google Play",
@@ -8448,6 +8458,16 @@
    "platform": "Google Play",
    "rating": 1,
    "text": "Broken, won't load.",
+   "title": ""
+  },
+  "gp_f960d0bb-7b44-4dc3-99c5-a87990443eda": {
+   "app": "Altametrics Schedules",
+   "author": "Joe Lazarus Jr.",
+   "date": "2026-11-02",
+   "id": "gp_f960d0bb-7b44-4dc3-99c5-a87990443eda",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "perfect for getting my work hours and days",
    "title": ""
   },
   "gp_f9e75f08-1409-4705-924c-ffbc8f63db85": {
@@ -22475,7 +22495,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-02T07:53:31Z",
+   "last_success": "2026-11-03T07:55:19Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22487,36 +22507,36 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-02T07:53:31Z",
+   "last_success": "2026-11-03T07:55:19Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4049,
+    "total_ratings": 4047,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-02T07:53:32Z",
+   "last_success": "2026-11-03T07:55:20Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1406,
+    "total_ratings": 1408,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-02T07:53:30Z",
+   "last_success": "2026-11-03T07:55:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18154,
+    "total_ratings": 18179,
     "total_reviews": null
    }
   },
@@ -22576,7 +22596,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-02T07:53:30Z",
+   "last_success": "2026-11-03T07:55:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22587,37 +22607,37 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 150,
-   "last_success": "2026-11-02T07:53:31Z",
+   "fetched": 146,
+   "last_success": "2026-11-03T07:55:19Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.77,
-    "total_ratings": 992,
-    "total_reviews": 107
+    "total_ratings": 988,
+    "total_reviews": 111
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-02T07:53:31Z",
+   "last_success": "2026-11-03T07:55:19Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.77,
-    "total_ratings": 609,
+    "total_ratings": 610,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-02T07:53:30Z",
+   "last_success": "2026-11-03T07:55:18Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8268,
+    "total_ratings": 8275,
     "total_reviews": 744
    }
   },
