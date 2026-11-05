@@ -18920,6 +18920,26 @@
    "text": "Mention a feature you used and what you thought of its usefulness.",
    "title": "Feature Feedback"
   },
+  "ios_14732805361": {
+   "app": "Altametrics DAR",
+   "author": "MitchellTys",
+   "date": "2026-10-31",
+   "id": "ios_14732805361",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Summarize your real experience, including strengths and areas to improve.",
+   "title": "Overall Feedback"
+  },
+  "ios_14733682579": {
+   "app": "Altametrics DAR",
+   "author": "Sander Austin",
+   "date": "2026-10-31",
+   "id": "ios_14733682579",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Explain whether you could locate the tool or information you needed.",
+   "title": "Finding Key Tools"
+  },
   "ios_14738566543": {
    "app": "Altametrics Schedules",
    "author": "Veedy13th",
@@ -18929,6 +18949,66 @@
    "rating": 5,
    "text": "Good",
    "title": "Good"
+  },
+  "ios_14739974823": {
+   "app": "Altametrics DAR",
+   "author": "Marnie_Jerniganj",
+   "date": "2026-11-01",
+   "id": "ios_14739974823",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Name a feature you tried and describe whether it saved you time.",
+   "title": "Time-Saving Feature"
+  },
+  "ios_14740322669": {
+   "app": "Altametrics DAR",
+   "author": "LandrumCurtish",
+   "date": "2026-11-01",
+   "id": "ios_14740322669",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Suggest where clearer wording or instructions might help users.",
+   "title": "Clearer Instructions"
+  },
+  "ios_14740761170": {
+   "app": "Altametrics DAR",
+   "author": "Prather Jacinto",
+   "date": "2026-11-01",
+   "id": "ios_14740761170",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Recommend one practical change that could improve your work routine.",
+   "title": "Workflow Improvement"
+  },
+  "ios_14743595112": {
+   "app": "Altametrics DAR",
+   "author": "Patience Jarvis",
+   "date": "2026-11-02",
+   "id": "ios_14743595112",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Summarize your actual experience with one benefit and one possible improvement.",
+   "title": "Realistic Overall Feedback"
+  },
+  "ios_14745744971": {
+   "app": "Altametrics DAR",
+   "author": "Upton Beau",
+   "date": "2026-11-03",
+   "id": "ios_14745744971",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Share which part of the app was straightforward and where navigation could be clearer.",
+   "title": "Workday Navigation"
+  },
+  "ios_14746255607": {
+   "app": "Altametrics DAR",
+   "author": "padilla maybelle",
+   "date": "2026-11-03",
+   "id": "ios_14746255607",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Explain whether the information displayed helped you with a real work task.",
+   "title": "Useful Information"
   },
   "ios_1786000653": {
    "app": "Altametrics Schedules",
@@ -22604,8 +22684,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-05T08:05:45Z",
+   "fetched": 487,
+   "last_success": "2026-11-05T15:47:07Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22616,37 +22696,37 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-05T08:05:46Z",
+   "fetched": 165,
+   "last_success": "2026-11-05T15:47:09Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4053,
+    "total_ratings": 4051,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-05T08:05:47Z",
+   "fetched": 134,
+   "last_success": "2026-11-05T15:47:11Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1409,
+    "total_ratings": 1410,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-05T08:05:44Z",
+   "fetched": 437,
+   "last_success": "2026-11-05T15:47:06Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18203,
+    "total_ratings": 18211,
     "total_reviews": null
    }
   },
@@ -22706,7 +22786,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-05T08:05:45Z",
+   "last_success": "2026-11-05T15:47:06Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22718,19 +22798,19 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 148,
-   "last_success": "2026-11-05T08:05:46Z",
+   "last_success": "2026-11-05T15:47:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
     "total_ratings": 992,
-    "total_reviews": 108
+    "total_reviews": 112
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-05T08:05:46Z",
+   "last_success": "2026-11-05T15:47:09Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22742,12 +22822,12 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-05T08:05:44Z",
+   "last_success": "2026-11-05T15:47:04Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8278,
+    "total_ratings": 8279,
     "total_reviews": 744
    }
   },
