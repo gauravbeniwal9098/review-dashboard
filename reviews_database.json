@@ -1602,7 +1602,7 @@
   },
   "gp_2c8b16e1-dbdd-4250-915e-66813514fa83": {
    "app": "Altametrics Clock",
-   "author": "Hamza Arshad",
+   "author": "Hamza Arshad 38-B-24",
    "date": "2026-04-29",
    "id": "gp_2c8b16e1-dbdd-4250-915e-66813514fa83",
    "platform": "Google Play",
@@ -3270,6 +3270,16 @@
    "text": "I Love it",
    "title": ""
   },
+  "gp_6a039cc9-85e6-469a-bd94-6bcdeb3d3431": {
+   "app": "Altametrics DAR",
+   "author": "Andrew lewis",
+   "date": "2026-11-04",
+   "id": "gp_6a039cc9-85e6-469a-bd94-6bcdeb3d3431",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "The interface is simple to navigate, and finding the information I need doesn't take much effort.",
+   "title": ""
+  },
   "gp_6a77a9ba-5922-4f10-bc02-ebde5185eddc": {
    "app": "Altametrics Schedules",
    "author": "Sadaf Khan",
@@ -3928,6 +3938,16 @@
    "platform": "Google Play",
    "rating": 5,
    "text": "Works great for shift tracking and clocking in without any hassle. The interface is simple, straightforward, and keeps daily schedules perfectly organized.",
+   "title": ""
+  },
+  "gp_7e359420-1e42-479d-a831-d585674dd5b6": {
+   "app": "Altametrics DAR",
+   "author": "Emma Jane",
+   "date": "2026-11-04",
+   "id": "gp_7e359420-1e42-479d-a831-d585674dd5b6",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "I like how everything is presented in one place. It makes managing daily tasks much more straightforward.",
    "title": ""
   },
   "gp_7eb5f286-7924-4932-9a5e-868ea8e77fbe": {
@@ -22884,8 +22904,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 100,
-   "last_success": "2026-11-05T15:52:19Z",
+   "fetched": 0,
+   "last_success": "2026-11-06T08:10:29Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22896,37 +22916,37 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 165,
-   "last_success": "2026-11-05T15:52:21Z",
+   "fetched": 0,
+   "last_success": "2026-11-06T08:10:30Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4051,
+    "total_ratings": 4053,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 134,
-   "last_success": "2026-11-05T15:52:22Z",
+   "fetched": 50,
+   "last_success": "2026-11-06T08:10:31Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1410,
+    "total_ratings": 1413,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 437,
-   "last_success": "2026-11-05T15:52:17Z",
+   "fetched": 0,
+   "last_success": "2026-11-06T08:10:29Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18211,
+    "total_ratings": 18226,
     "total_reviews": null
    }
   },
@@ -22986,7 +23006,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-05T15:52:18Z",
+   "last_success": "2026-11-06T08:10:29Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -22997,38 +23017,38 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 148,
-   "last_success": "2026-11-05T15:52:19Z",
+   "fetched": 149,
+   "last_success": "2026-11-06T08:10:30Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
-    "total_ratings": 992,
-    "total_reviews": 112
+    "total_ratings": 993,
+    "total_reviews": 110
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-05T15:52:21Z",
+   "last_success": "2026-11-06T08:10:30Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.78,
-    "total_ratings": 613,
+    "total_ratings": 614,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-05T15:52:15Z",
+   "last_success": "2026-11-06T08:10:28Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8279,
-    "total_reviews": 744
+    "total_ratings": 8281,
+    "total_reviews": 745
    }
   },
   "Indeed": {
