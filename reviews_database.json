@@ -19140,6 +19140,136 @@
    "text": "Explain whether the information displayed helped you with a real work task.",
    "title": "Useful Information"
   },
+  "ios_14748627455": {
+   "app": "Altametrics DAR",
+   "author": "Jannie_Normani",
+   "date": "2026-11-03",
+   "id": "ios_14748627455",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Recommend a specific improvement that could make routine tasks smoother.",
+   "title": "Workflow Suggestion"
+  },
+  "ios_14748927398": {
+   "app": "Altametrics DAR",
+   "author": "merlene nita",
+   "date": "2026-11-04",
+   "id": "ios_14748927398",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Summarize your real experience with one useful aspect and one possible improvement.",
+   "title": "Balanced Feedback"
+  },
+  "ios_14753078025": {
+   "app": "Altametrics DAR",
+   "author": "Ashly Schmitt",
+   "date": "2026-11-05",
+   "id": "ios_14753078025",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Describe how easily you found the information needed to begin a work task.",
+   "title": "Starting a Work Task"
+  },
+  "ios_14755291241": {
+   "app": "Altametrics DAR",
+   "author": "Cordero_Yonw",
+   "date": "2026-11-05",
+   "id": "ios_14755291241",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "If you used the app during a shift, explain how it fitted into your work routine.",
+   "title": "Fits My Shift"
+  },
+  "ios_14755688250": {
+   "app": "Altametrics DAR",
+   "author": "tomika jolley",
+   "date": "2026-11-05",
+   "id": "ios_14755688250",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Name a feature you actually tried and describe how it helped with your work.",
+   "title": "Feature in Practice"
+  },
+  "ios_14756341228": {
+   "app": "Altametrics DAR",
+   "author": "downey_pembertonq",
+   "date": "2026-11-05",
+   "id": "ios_14756341228",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Recommend a practical improvement that could make a regular work task easier.",
+   "title": "Smoother Workflow"
+  },
+  "ios_14756635718": {
+   "app": "Altametrics DAR",
+   "author": "MikaelaEndal",
+   "date": "2026-11-05",
+   "id": "ios_14756635718",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Summarize your real experience with one useful aspect and one possible improvement.",
+   "title": "Workplace App Feedback"
+  },
+  "ios_14758066715": {
+   "app": "Altametrics DAR",
+   "author": "Berryman_Jakeu",
+   "date": "2026-11-06",
+   "id": "ios_14758066715",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Altametrics DAR is a helpful tool for keeping track of store performance. The business insights make it easier to review results and plan improvements.",
+   "title": "Great management tool"
+  },
+  "ios_14758416278": {
+   "app": "Altametrics DAR",
+   "author": "Mathilde Bong",
+   "date": "2026-11-06",
+   "id": "ios_14758416278",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "I appreciate the ability to review sales information from the app. Altametrics DAR provides useful business data that can support better decisions throughout the day.",
+   "title": "Useful sales tracking"
+  },
+  "ios_14758673011": {
+   "app": "Altametrics DAR",
+   "author": "maile stepanie",
+   "date": "2026-11-06",
+   "id": "ios_14758673011",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "This app gives me convenient access to important operational information. The sales and labor insights are especially helpful when reviewing store performance.",
+   "title": "Good for daily operations"
+  },
+  "ios_14758974661": {
+   "app": "Altametrics DAR",
+   "author": "Bottoms Seema",
+   "date": "2026-11-06",
+   "id": "ios_14758974661",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "The analytics are useful for understanding how the business is performing. Altametrics DAR gives managers valuable information that can support smarter operational decisions.",
+   "title": "Helpful analytics"
+  },
+  "ios_14759469315": {
+   "app": "Altametrics DAR",
+   "author": "Taber Ehtel",
+   "date": "2026-11-06",
+   "id": "ios_14759469315",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "The labor information is helpful when evaluating daily operations. Altametrics DAR gives a practical view of important numbers and helps managers stay informed.",
+   "title": "Useful labor visibility"
+  },
+  "ios_14759707767": {
+   "app": "Altametrics DAR",
+   "author": "jessie_swensonu",
+   "date": "2026-11-06",
+   "id": "ios_14759707767",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "I find the performance information useful for daily management. The app brings important business metrics together and makes reviewing store results more convenient.",
+   "title": "Good performance overview"
+  },
   "ios_1786000653": {
    "app": "Altametrics Schedules",
    "author": "Your boy, blue",
@@ -23014,8 +23144,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-07T07:28:23Z",
+   "fetched": 50,
+   "last_success": "2026-11-08T07:39:16Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23026,20 +23156,20 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-07T07:28:23Z",
+   "fetched": 50,
+   "last_success": "2026-11-08T07:39:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4053,
+    "total_ratings": 4065,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-07T07:28:24Z",
+   "last_success": "2026-11-08T07:39:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23051,12 +23181,12 @@
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-07T07:28:22Z",
+   "last_success": "2026-11-08T07:39:15Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18226,
+    "total_ratings": 18276,
     "total_reviews": null
    }
   },
@@ -23116,7 +23246,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-07T07:28:22Z",
+   "last_success": "2026-11-08T07:39:15Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23127,37 +23257,37 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 158,
-   "last_success": "2026-11-07T07:28:23Z",
+   "fetched": 153,
+   "last_success": "2026-11-08T07:39:16Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
-    "total_ratings": 1003,
-    "total_reviews": 109
+    "total_ratings": 998,
+    "total_reviews": 112
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-07T07:28:24Z",
+   "last_success": "2026-11-08T07:39:17Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.78,
-    "total_ratings": 614,
+    "total_ratings": 616,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-07T07:28:22Z",
+   "last_success": "2026-11-08T07:39:14Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.74,
-    "total_ratings": 8285,
+    "total_ratings": 8293,
     "total_reviews": 745
    }
   },
