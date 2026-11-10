@@ -8732,7 +8732,7 @@
   },
   "gp_f95cba72-a690-4d61-94bf-33984d52e491": {
    "app": "Altametrics Inventory Pro",
-   "author": "Wayne",
+   "author": "Wayne Rafferty",
    "date": "2022-02-11",
    "id": "gp_f95cba72-a690-4d61-94bf-33984d52e491",
    "platform": "Google Play",
@@ -23204,8 +23204,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 50,
-   "last_success": "2026-11-09T08:17:42Z",
+   "fetched": 0,
+   "last_success": "2026-11-10T08:36:27Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23217,36 +23217,36 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-09T08:17:43Z",
+   "last_success": "2026-11-10T08:36:28Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4070,
+    "total_ratings": 4073,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-09T08:17:44Z",
+   "last_success": "2026-11-10T08:36:28Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1415,
+    "total_ratings": 1416,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-09T08:17:42Z",
+   "last_success": "2026-11-10T08:36:26Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18293,
+    "total_ratings": 18315,
     "total_reviews": null
    }
   },
@@ -23306,7 +23306,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-09T08:17:42Z",
+   "last_success": "2026-11-10T08:36:26Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23317,20 +23317,20 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 155,
-   "last_success": "2026-11-09T08:17:43Z",
+   "fetched": 152,
+   "last_success": "2026-11-10T08:36:28Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
-    "total_ratings": 1000,
-    "total_reviews": 109
+    "total_ratings": 997,
+    "total_reviews": 108
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-09T08:17:43Z",
+   "last_success": "2026-11-10T08:36:28Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23342,12 +23342,12 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-09T08:17:41Z",
+   "last_success": "2026-11-10T08:36:26Z",
    "ok": true,
    "source": "auto",
    "summary": {
-    "rating": 4.74,
-    "total_ratings": 8294,
+    "rating": 4.75,
+    "total_ratings": 8297,
     "total_reviews": 745
    }
   },
