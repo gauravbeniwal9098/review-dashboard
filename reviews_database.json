@@ -19540,6 +19540,56 @@
    "text": "Being able to view important store information on mobile is useful when moving around the restaurant or handling other management tasks.",
    "title": "Easy mobile access"
   },
+  "ios_14775771260": {
+   "app": "Altametrics DAR",
+   "author": "Janene_Delphau",
+   "date": "2026-11-10",
+   "id": "ios_14775771260",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "The app works as a handy companion to regular reporting, giving managers another convenient way to review essential business information.",
+   "title": "A practical reporting companion"
+  },
+  "ios_14776214752": {
+   "app": "Altametrics DAR",
+   "author": "SteveCorriganu",
+   "date": "2026-11-10",
+   "id": "ios_14776214752",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Altametrics DAR is helpful for quick checks between scheduled reporting sessions, especially when I need a brief update on store activity.",
+   "title": "Useful between reports"
+  },
+  "ios_14776440456": {
+   "app": "Altametrics DAR",
+   "author": "dickens sarina",
+   "date": "2026-11-10",
+   "id": "ios_14776440456",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "I like having relevant business figures accessible in one mobile view, making it simpler to stay connected with store performance.",
+   "title": "Key details close by"
+  },
+  "ios_14776657764": {
+   "app": "Altametrics DAR",
+   "author": "duong cherelle",
+   "date": "2026-11-11",
+   "id": "ios_14776657764",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "The app provides a convenient way to reference sales and labor information while keeping up with the regular demands of store management.",
+   "title": "Everyday management support"
+  },
+  "ios_14776944870": {
+   "app": "Altametrics DAR",
+   "author": "Maisie_Barabarag",
+   "date": "2026-11-11",
+   "id": "ios_14776944870",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "Altametrics DAR makes it easier to check important store figures at a glance, helping managers stay informed without opening several reports.",
+   "title": "A Faster Look at Store Results"
+  },
   "ios_1786000653": {
    "app": "Altametrics Schedules",
    "author": "Your boy, blue",
@@ -22000,6 +22050,16 @@
    "text": "Working at Altametrics as a Client Support Executive has been a valuable experience for me, especially in terms of professional growth and industry exposure. The role gives hands-on experience working with clients and understanding real-world business needs, particularly in the restaurant and retail technology space.",
    "title": "Productive Workplace with a Strong Learning Curve"
   },
+  "m_0a8614bddac3524a": {
+   "app": "",
+   "author": "Product Dept",
+   "date": "2026-11-04",
+   "id": "m_0a8614bddac3524a",
+   "platform": "Comparably",
+   "rating": null,
+   "text": "The interview process was smooth and straightforward. The interviewers were friendly, and the conversation felt comfortable rather than stressful.",
+   "title": "[Interviews · Positive] What did you like most about the interview process?"
+  },
   "m_0bd23e968dcdf128": {
    "app": "",
    "author": "Anonymous",
@@ -22179,6 +22239,16 @@
    "rating": 5.0,
    "text": "Comments: $undefined | Pros: Managing our store has never been smoother. The manager features like approving shifts, managing punches, and real-time labor alerts are invaluable. Crew members appreciate the ease of offering and swapping shifts, syncing schedules to their calendars, and the efficient ChitChat feature. Five stars without a doubt! | Cons: Potential for further user interface enhancement.",
    "title": "Exceptional app for streamlined scheduling."
+  },
+  "m_2d40ac659566e5d1": {
+   "app": "",
+   "author": "Business Analyst, Costa Mesa, CA",
+   "date": "2026-11-04",
+   "id": "m_2d40ac659566e5d1",
+   "platform": "Glassdoor",
+   "rating": 5.0,
+   "text": "Pros: One of the good things about working at Altametrics is the people. The team is helpful, and colleagues are generally easy to work with. There are opportunities to learn new things and take on different responsibilities. | Cons: Sometimes work pressure can increase when multiple deadlines come together.",
+   "title": "Supportive team with learning opportunities"
   },
   "m_2d481d4cd7640332": {
    "app": "",
@@ -23414,8 +23484,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 487,
-   "last_success": "2026-11-12T08:35:35Z",
+   "fetched": 0,
+   "last_success": "2026-11-12T14:33:07Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23426,8 +23496,8 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 191,
-   "last_success": "2026-11-12T08:35:36Z",
+   "fetched": 50,
+   "last_success": "2026-11-12T14:33:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23438,8 +23508,8 @@
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 134,
-   "last_success": "2026-11-12T08:35:37Z",
+   "fetched": 0,
+   "last_success": "2026-11-12T14:33:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23450,8 +23520,8 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 300,
-   "last_success": "2026-11-12T08:35:33Z",
+   "fetched": 0,
+   "last_success": "2026-11-12T14:33:06Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23464,7 +23534,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23477,7 +23547,7 @@
    "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23485,13 +23555,13 @@
     "positive_pct": 99,
     "rating": null,
     "total_ratings": null,
-    "total_reviews": 1427
+    "total_reviews": 1428
    }
   },
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23504,19 +23574,19 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
     "rating": 4.7,
     "total_ratings": null,
-    "total_reviews": 313
+    "total_reviews": 314
    }
   },
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-12T08:35:33Z",
+   "last_success": "2026-11-12T14:33:06Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23528,7 +23598,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 145,
-   "last_success": "2026-11-12T08:35:35Z",
+   "last_success": "2026-11-12T14:33:07Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23540,7 +23610,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-12T08:35:37Z",
+   "last_success": "2026-11-12T14:33:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23552,19 +23622,19 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-12T08:35:31Z",
+   "last_success": "2026-11-12T14:33:06Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8306,
+    "total_ratings": 8307,
     "total_reviews": 745
    }
   },
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23577,7 +23647,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23590,7 +23660,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-05T15:51:59Z",
+   "last_success": "2026-11-12T14:32:46Z",
    "ok": true,
    "source": "laptop",
    "summary": {
