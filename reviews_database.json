@@ -18892,7 +18892,7 @@
   },
   "ios_14711985837": {
    "app": "Altametrics DAR",
-   "author": "bond brock",
+   "author": "Cary Lawler",
    "date": "2026-10-25",
    "id": "ios_14711985837",
    "platform": "App Store",
@@ -19589,6 +19589,26 @@
    "rating": 5,
    "text": "Altametrics DAR makes it easier to check important store figures at a glance, helping managers stay informed without opening several reports.",
    "title": "A Faster Look at Store Results"
+  },
+  "ios_14777867598": {
+   "app": "Altametrics DAR",
+   "author": "Ricks Castellanos",
+   "date": "2026-11-11",
+   "id": "ios_14777867598",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "The combined sales and labor information gives managers a useful way to review daily activity and understand how different parts of the operation are tracking.",
+   "title": "Sales and Labor Together"
+  },
+  "ios_14780279054": {
+   "app": "Altametrics DAR",
+   "author": "VandykeClementinel",
+   "date": "2026-11-11",
+   "id": "ios_14780279054",
+   "platform": "App Store",
+   "rating": 5,
+   "text": "The app offers a practical way to check essential store numbers away from a computer, supporting a clearer view of ongoing operations.",
+   "title": "Quick Access to Key Figures"
   },
   "ios_1786000653": {
    "app": "Altametrics Schedules",
@@ -23484,8 +23504,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-13T08:22:18Z",
+   "fetched": 487,
+   "last_success": "2026-11-14T07:46:04Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23496,20 +23516,20 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-13T08:22:19Z",
+   "fetched": 185,
+   "last_success": "2026-11-14T07:46:05Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.81,
-    "total_ratings": 4094,
+    "total_ratings": 4085,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-13T08:22:19Z",
+   "fetched": 134,
+   "last_success": "2026-11-14T07:46:06Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23520,13 +23540,13 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-13T08:22:18Z",
+   "fetched": 439,
+   "last_success": "2026-11-14T07:46:02Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.7,
-    "total_ratings": 18345,
+    "total_ratings": 18366,
     "total_reviews": null
    }
   },
@@ -23586,7 +23606,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-13T08:22:18Z",
+   "last_success": "2026-11-14T07:46:02Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23597,37 +23617,37 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 145,
-   "last_success": "2026-11-13T08:22:18Z",
+   "fetched": 140,
+   "last_success": "2026-11-14T07:46:04Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
-    "total_ratings": 994,
-    "total_reviews": 102
+    "total_ratings": 989,
+    "total_reviews": 99
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-13T08:22:19Z",
+   "last_success": "2026-11-14T07:46:05Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.78,
-    "total_ratings": 617,
+    "total_ratings": 619,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-13T08:22:17Z",
+   "last_success": "2026-11-14T07:46:00Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8312,
+    "total_ratings": 8315,
     "total_reviews": 745
    }
   },
