@@ -23000,6 +23000,16 @@
    "text": "The leadership team is approachable and generally open to suggestions. They provide guidance when needed and give employees the opportunity to learn and take on new responsibilities.",
    "title": "[Leadership · Positive] What do you like best about the leadership team?"
   },
+  "m_a3e97ee1a4b3d631": {
+   "app": "",
+   "author": "Sales, Costa Mesa, CA",
+   "date": "2026-11-12",
+   "id": "m_a3e97ee1a4b3d631",
+   "platform": "Glassdoor",
+   "rating": 1.0,
+   "text": "Pros: If you are an entry level worker or this is your 1st job out of college, it may be ok for 1 year or less but its not a \"real company\" with an engaged CEO etc. The CEO is not engaged and not what you would call \"looked up to\". This company was a good place to work 20 years ago but its software is old, the culture is toxic, there is no on-boarding or training and layoffs all the time. There is a core group of 3 people who have been there 10+ years who are Indian-American like the owners, but no one else lasts, even the head of HR was fired when I was there. | Cons: 1. No direction and strategy for the business with a CEO who shows ups PT as he also owns restaurants. This company has made customers angry and you will not get call backs or respect from current clients 2. New software (POS &amp; Accounting) is targeting SMB and people selling it are on commission or put in impossible positions to succeed with zero support. 3. You will have to self-fund what you do. Need business cards? Go get them done and pay for it yourself. | Advice: Find a Private Equity partner and sell the business.",
+   "title": "Toxic culture with old technology &amp; high-turn over"
+  },
   "m_a4609e5d7bdd1908": {
    "app": "",
    "author": "iOS Developer, Costa Mesa, CA",
@@ -23069,6 +23079,16 @@
    "rating": null,
    "text": "Because they dont pay well and be wfirs sicks",
    "title": "[Compensation · Constructive] Why do you feel undervalued and what would make you feel better about your compensation?"
+  },
+  "m_b45564f36b352870": {
+   "app": "",
+   "author": "Product Dept",
+   "date": "2026-11-04",
+   "id": "m_b45564f36b352870",
+   "platform": "Comparably",
+   "rating": null,
+   "text": "The work environment is friendly and comfortable. People are approachable, teamwork is encouraged, and there is a good opportunity to learn and grow while working.",
+   "title": "[Environment · Positive] What is most positive about the culture and environment at your company?"
   },
   "m_b6730d25760fced6": {
    "app": "",
@@ -23515,7 +23535,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-16T08:12:55Z",
+   "last_success": "2026-11-16T10:27:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23527,7 +23547,7 @@
   "App Store · Altametrics DAR": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-16T08:12:56Z",
+   "last_success": "2026-11-16T10:27:09Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23539,7 +23559,7 @@
   "App Store · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-16T08:12:57Z",
+   "last_success": "2026-11-16T10:27:09Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23550,8 +23570,8 @@
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-16T08:12:55Z",
+   "fetched": 100,
+   "last_success": "2026-11-16T10:27:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23564,7 +23584,7 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23577,7 +23597,7 @@
    "error": "",
    "fetched": 53,
    "last_attempt": "2026-10-14T12:32:15Z",
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23585,13 +23605,13 @@
     "positive_pct": 99,
     "rating": null,
     "total_ratings": null,
-    "total_reviews": 1428
+    "total_reviews": 1429
    }
   },
   "G2": {
    "error": "",
    "fetched": 10,
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23604,19 +23624,19 @@
    "error": "",
    "fetched": 5,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
     "rating": 4.7,
     "total_ratings": null,
-    "total_reviews": 314
+    "total_reviews": 315
    }
   },
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-16T08:12:55Z",
+   "last_success": "2026-11-16T10:27:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23628,7 +23648,7 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 140,
-   "last_success": "2026-11-16T08:12:56Z",
+   "last_success": "2026-11-16T10:27:08Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23640,7 +23660,7 @@
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-16T08:12:56Z",
+   "last_success": "2026-11-16T10:27:09Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23652,7 +23672,7 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-16T08:12:54Z",
+   "last_success": "2026-11-16T10:27:07Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23664,7 +23684,7 @@
   "Indeed": {
    "error": "",
    "fetched": 20,
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23677,7 +23697,7 @@
    "error": "",
    "fetched": 25,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
@@ -23690,7 +23710,7 @@
    "error": "",
    "fetched": 0,
    "last_attempt": "2026-10-13T15:26:03Z",
-   "last_success": "2026-11-12T14:32:46Z",
+   "last_success": "2026-11-16T10:26:49Z",
    "ok": true,
    "source": "laptop",
    "summary": {
