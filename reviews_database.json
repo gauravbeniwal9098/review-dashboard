@@ -23514,8 +23514,8 @@
  "status": {
   "App Store · Altametrics Clock": {
    "error": "",
-   "fetched": 487,
-   "last_success": "2026-11-15T08:04:07Z",
+   "fetched": 0,
+   "last_success": "2026-11-16T08:12:55Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23526,37 +23526,37 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 184,
-   "last_success": "2026-11-15T08:04:08Z",
+   "fetched": 0,
+   "last_success": "2026-11-16T08:12:56Z",
    "ok": true,
    "source": "auto",
    "summary": {
-    "rating": 4.8,
+    "rating": 4.81,
     "total_ratings": 4085,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 134,
-   "last_success": "2026-11-15T08:04:09Z",
+   "fetched": 0,
+   "last_success": "2026-11-16T08:12:57Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1424,
+    "total_ratings": 1426,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 439,
-   "last_success": "2026-11-15T08:04:05Z",
+   "fetched": 0,
+   "last_success": "2026-11-16T08:12:55Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.69,
-    "total_ratings": 18383,
+    "total_ratings": 18391,
     "total_reviews": null
    }
   },
@@ -23616,7 +23616,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-15T08:04:06Z",
+   "last_success": "2026-11-16T08:12:55Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23628,36 +23628,36 @@
   "Google Play · Altametrics DAR": {
    "error": "",
    "fetched": 140,
-   "last_success": "2026-11-15T08:04:07Z",
+   "last_success": "2026-11-16T08:12:56Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
     "total_ratings": 990,
-    "total_reviews": 99
+    "total_reviews": 110
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-15T08:04:09Z",
+   "last_success": "2026-11-16T08:12:56Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.78,
-    "total_ratings": 619,
+    "total_ratings": 620,
     "total_reviews": 65
    }
   },
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-15T08:04:03Z",
+   "last_success": "2026-11-16T08:12:54Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.75,
-    "total_ratings": 8325,
+    "total_ratings": 8333,
     "total_reviews": 745
    }
   },
