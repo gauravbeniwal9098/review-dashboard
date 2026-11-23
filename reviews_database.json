@@ -2740,6 +2740,16 @@
    "text": "A very useful and convenient app for managing work schedules. The interface is simple and easy to understand, making it easy to check shifts and stay organized. Everything feels well arranged and accessible. Overall, a helpful app for keeping track of work schedules and staying updated.",
    "title": ""
   },
+  "gp_518cba76-e6ae-4aaf-9acc-ea581e2f6d45": {
+   "app": "Altametrics DAR",
+   "author": "Mihra Diyana",
+   "date": "2026-11-22",
+   "id": "gp_518cba76-e6ae-4aaf-9acc-ea581e2f6d45",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "This workforce management app offers organized operational insights with efficient scheduling tools and a professional dashboard experience",
+   "title": ""
+  },
   "gp_5298877c-6cf5-4ae0-a2a1-c9b0f02cee88": {
    "app": "Altametrics Inventory Pro",
    "author": "jeremy garner",
@@ -6620,6 +6630,16 @@
    "text": "Constantly giving error, something wrong asking to re log in and giving same error afterwards.",
    "title": ""
   },
+  "gp_bf0f56e0-07e0-47aa-98cd-0e428fbfe9d5": {
+   "app": "Altametrics DAR",
+   "author": "It's khani 2",
+   "date": "2026-11-22",
+   "id": "gp_bf0f56e0-07e0-47aa-98cd-0e428fbfe9d5",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "Great app with a clean design and useful management features. Easy to navigate and makes daily tasks more convenient. Very helpful overall! 👍",
+   "title": ""
+  },
   "gp_bf67480c-6b51-4a32-9b05-57d4a2b2f332": {
    "app": "Altametrics DAR",
    "author": "A Google user",
@@ -8138,6 +8158,16 @@
    "platform": "Google Play",
    "rating": 5,
    "text": "ZipClockers app is a lifesaver for managing projects, super easy to track time. Great tool for teams✅",
+   "title": ""
+  },
+  "gp_e6da3087-eb07-407b-885d-d4953b7127f0": {
+   "app": "Altametrics DAR",
+   "author": "ABRAM MENDEZ",
+   "date": "2026-11-22",
+   "id": "gp_e6da3087-eb07-407b-885d-d4953b7127f0",
+   "platform": "Google Play",
+   "rating": 5,
+   "text": "Very helpful app for work! Dashboard bohat clear aur easy to understand hai. Sab reports fast load hoti hain",
    "title": ""
   },
   "gp_e6ed6577-649e-4912-a7d3-79e9cf75aff8": {
@@ -19750,6 +19780,26 @@
    "text": "Works great! Easy to use!",
    "title": "Schedule"
   },
+  "ios_14806497095": {
+   "app": "Altametrics Schedules",
+   "author": "as.1:3",
+   "date": "2026-11-18",
+   "id": "ios_14806497095",
+   "platform": "App Store",
+   "rating": 2,
+   "text": "super slow sometimes, i don’t like you can’t see whoelse is working like every other scheduling app. no manager info shown either.",
+   "title": "mid"
+  },
+  "ios_14817118020": {
+   "app": "Altametrics Schedules",
+   "author": "🏛️⛩️",
+   "date": "2026-11-21",
+   "id": "ios_14817118020",
+   "platform": "App Store",
+   "rating": 1,
+   "text": "Slow app that crashes constantly. I’ve seen multiple one star reviews criticizing the fact that this app has frequent crashes, runs slowly, or straight up refuses to open no matter how many times you uninstall and reinstall it. The developers do not care and are not trying to fix this issue. The app keeps getting worse and worse the longer I have it on my device, and there’s not even a web browser version. This is one of the worst scheduling apps I’ve ever been forced to use by a company.",
+   "title": "Slow app"
+  },
   "ios_1786000653": {
    "app": "Altametrics Schedules",
    "author": "Your boy, blue",
@@ -23665,7 +23715,7 @@
   "App Store · Altametrics Clock": {
    "error": "",
    "fetched": 0,
-   "last_success": "2026-11-22T08:23:49Z",
+   "last_success": "2026-11-23T09:22:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23676,8 +23726,8 @@
   },
   "App Store · Altametrics DAR": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-22T08:23:50Z",
+   "fetched": 50,
+   "last_success": "2026-11-23T09:22:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23688,25 +23738,25 @@
   },
   "App Store · Altametrics Inventory Pro": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-22T08:23:50Z",
+   "fetched": 50,
+   "last_success": "2026-11-23T09:22:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.68,
-    "total_ratings": 1429,
+    "total_ratings": 1431,
     "total_reviews": null
    }
   },
   "App Store · Altametrics Schedules": {
    "error": "",
-   "fetched": 0,
-   "last_success": "2026-11-22T08:23:48Z",
+   "fetched": 50,
+   "last_success": "2026-11-23T09:22:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.69,
-    "total_ratings": 18488,
+    "total_ratings": 18525,
     "total_reviews": null
    }
   },
@@ -23766,7 +23816,7 @@
   "Google Play · Altametrics Clock": {
    "error": "",
    "fetched": 277,
-   "last_success": "2026-11-22T08:23:49Z",
+   "last_success": "2026-11-23T09:22:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23777,20 +23827,20 @@
   },
   "Google Play · Altametrics DAR": {
    "error": "",
-   "fetched": 140,
-   "last_success": "2026-11-22T08:23:49Z",
+   "fetched": 142,
+   "last_success": "2026-11-23T09:22:49Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.79,
-    "total_ratings": 995,
-    "total_reviews": 100
+    "total_ratings": 997,
+    "total_reviews": 102
    }
   },
   "Google Play · Altametrics Inventory Pro": {
    "error": "",
    "fetched": 88,
-   "last_success": "2026-11-22T08:23:50Z",
+   "last_success": "2026-11-23T09:22:50Z",
    "ok": true,
    "source": "auto",
    "summary": {
@@ -23802,12 +23852,12 @@
   "Google Play · Altametrics Schedules": {
    "error": "",
    "fetched": 300,
-   "last_success": "2026-11-22T08:23:48Z",
+   "last_success": "2026-11-23T09:22:48Z",
    "ok": true,
    "source": "auto",
    "summary": {
     "rating": 4.76,
-    "total_ratings": 8361,
+    "total_ratings": 8367,
     "total_reviews": 745
    }
   },
